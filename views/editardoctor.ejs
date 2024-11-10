@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
+    <title>CRUD de Editar doctor</title>
+</head>
+<body style="background-color:powderblue;">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        
+    <nav class="navbar navbar-dark">   
+    </nav>            
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+        </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/pacientes">Crud de paciente</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/contacto">Contacto</a>
+        </li>  
+        <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+        </li>                     
+        </ul>
+            
+        </div>
+        </div>
+    </nav>
+    <% if (doctor) { %><!--viene de router editar doctor es donde guardo todos los objetos doctor-->
+    <div class="container mt-4">
+    <tr>
+    <div class="card border-secondary" data-bs-theme="blue">  
+    <div class="card-header">Editar Registro de un Doctor</div>
+    <div class="card-body">
+
+        <form action="/updatedoctor" method="POST" class="needs-validation" novalidate>
+          <input id="id" name="id" value="<%= doctor.id %>" hidden>
+          <div class="has-validation">
+          <label for="user" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" value="<%= doctor.nombre  %>" tabindex="1" required>
+          <div class="valid-feedback">
+             !Exelente!
+          </div>
+          <div class="invalid-feedback">
+            por favor escriba el nombre
+          </div>
+          </div>
+
+          <div>
+          <label for="paciente" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="apellido" name="apellido" value="<%= doctor.apellido  %>" tabindex="2" required>
+          </div>
+          <div>
+          <label for="paciente" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" value="<%= doctor.email  %>" tabindex="4" required>
+          </div>
+
+          <div>
+          <label for="doctor" class="form-label">Fecha de Nacimiento</label>
+          <input type="date" class="form-control" id="nacimiento" name="nacimiento" value="<%= doctor.nacimiento  %>" class="form-control datetimepicker" tabindex="5" required>
+          </div>
+          <div>
+            <fieldset>
+            <legend>Seleccione el Genero:</legend>
+            <div>
+            <input type="radio" id="genero" name="genero" value="<%= doctor.genero  %>" checked tabindex="7" required>
+            <label for="masculino">Masculino</label>
+            </div>
+                            
+            <div>
+            <input type="radio" id="genero" name="genero" value="<%= doctor.genero  %>" />
+            <label for="femenino">Femenino</label>
+            </div>
+                            
+            <div>
+            <input type="radio" id="genero" name="genero" value="<%= doctor.genero  %>" />
+            <label for="indefinido">Indefinido</label>
+            </div>
+            </fieldset>
+            </div>
+            <div>
+            <label for="doctor" class="form-label">Direccion</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" value="<%= doctor.direccion  %>" tabindex="4" required>
+            </div>  
+         
+          
+
+          <div>
+          <label for="doctor" class="form-label">Celular</label>
+          <input type="number" class="form-control" id="celular" name="celular" value="<%= doctor.celular  %>" tabindex="10" required>
+          </div>
+
+          <div>
+            <div class="profile-upload">
+              <div class="upload-img">
+                <img alt="" src="/public/assets/img/doctor-thumb-01.jpg">
+              </div>
+              <div class="upload-input">
+          <label for="doctor" class="form-label">Imagen</label>
+          <input type="file" class="form-control" id="imagen" name="imagen" value="<%= doctor.imagen  %>" tabindex="11" required>
+          </div></div>
+          <div>
+            <label for="doctor" class="form-label">Sucursal</label>
+            <input type="text" class="form-control" id="sucursal" name="sucursal" value="<%= doctor.sucursal  %>" tabindex="11" required>
+            </div>
+            <div>
+            <label for="doctor" class="form-label">Biografia</label>
+            <input type="text" class="form-control" id="biografia" name="biografia" value="<%= doctor.biografia  %>" tabindex="11" required>
+            </div>
+           
+            <div>
+            <label for="doctor" class="form-label">Matricula</label>
+            <input type="text" class="form-control" id="matricula" name="matricula" value="<%= doctor.matricula  %>" tabindex="11" required>
+            </div>  
+            <div>
+            <label for="doctor" class="form-label">DNI</label>
+            <input type="number" class="form-control" id="dni" name="dni" value="<%= doctor.dni  %>" tabindex="11" required>
+            </div> 
+            <br>         
+          <button type="submit" class="btn btn-primary" tabindex="13">Guardar</button>
+          <a href="/doctor" class="btn btn-secondary">Cancelar</a>
+          <button  type="reset">Resetear</button>
+          
+
+                       
+                    
+                  </form>
+                </div>
+            </div>
+          </tr>        
+      </div>
+      <% } %>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+
+<script>
+  //Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
+(() => {
+  'use strict'
+
+  // Obtenga todos los formularios a los que queremos aplicar estilos de validación Bootstrap personalizados
+
+  const forms = document.querySelectorAll('.needs-validation')
+
+  //Bucle sobre ellos y evitar la presentación
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
+
+</html>

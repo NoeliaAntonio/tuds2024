@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet">
+    <title>Editar Turno</title>
+</head>
+
+<body style="background-color:powderblue;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">        
+    <nav class="navbar navbar-dark">  
+      </nav>            
+          <but ton class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/indexshift">Turno Editar</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contacto">Contacto</a>
+              </li>                     
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+
+      <% if (shift) { %><!--viene de router editarshift...shift:results[0]...-->
+      <div class="container mt-4">
+      <div class="card border-secondary">  
+      <div class="card-header">Editar Registro de Turno</div>
+      <div class="card-body">
+      <form action="/updateshift" method="POST"><!--updateshift esta en el crudshift en la fuincion updateshift-->
+      <input id="id" name="id" value="<%= shift.id %>" hidden>
+
+     
+ 
+
+     
+
+
+      <div class="mb-3">
+      <label for="shift" class="form-label">SECUENCIA</label>
+      <select id="secuencia" name="secuencia"   value="" tabindex="3">
+        <option <%- shift.secuencia=='1' ? "selected" : "" %> value="1">1</option>
+        <option <%- shift.secuencia=='2' ? "selected" : "" %> value="2">2</option>
+        <option <%- shift.secuencia=='3' ? "selected" : "" %> value="3">3</option>
+        <option <%- shift.secuencia=='4' ? "selected" : "" %> value="4">4</option>
+        <option <%- shift.secuencia=='5' ? "selected" : "" %> value="5">5</option>
+        <option <%- shift.secuencia=='6' ? "selected" : "" %> value="6">6</option>
+        <option <%- shift.secuencia=='7' ? "selected" : "" %> value="7">7</option>
+        <option <%- shift.secuencia=='8' ? "selected" : "" %> value="8">8</option>
+        <option <%- shift.secuencia=='9' ? "selected" : "" %> value="9">9</option>
+        <option <%- shift.secuencia=='10' ? "selected" : "" %> value="10">10</option>
+        <option <%- shift.secuencia=='11' ? "selected" : "" %> value="11">11</option>
+        <option <%- shift.secuencia=='12' ? "selected" : "" %> value="">12</option>
+        <option <%- shift.secuencia=='13' ? "selected" : "" %> value="13"></option>
+      </select>                              
+      </div> 
+      
+      
+      <div class="mb-3">
+      <label for="user" class="form-label">Elige la fecha de tu turno preferida (obligatorio, del 5 al 29 de noviembre):
+      <!--<input type="text" class="form-control" id="fecha" name="fecha" tabindex="4" value="<%= shift.fecha  %>">-->
+      <input type="date" class="form-control" id="fecha" name="fecha" tabindex="4" value="<%= shift.fecha  %>" 
+      min="2024-11-5"
+      max="2024-11-29" required pattern="\d{4}-\d{2}-\d{2}" /><!--min y max me restringen la fecha-->
+      <span class="validity"></span>
+  </label>
+      </div>  
+
+
+      <div class="mb-3">
+      <label for="user" class="form-label">HORA</label>
+      <input type="time" class="form-control" id="hora" name="hora" tabindex="5" value="<%= shift.hora  %>"  min=9:00 max=17:00 >                        
+      </div>  
+
+
+      
+      <div class="mb-3">
+        <label for="user" class="form-label">ID_ESTADO</label>
+        <select id="id_estado" name="id_estado"   value="" tabindex="6">
+            <option <%- shift.id_estado=='1' ? "selected" : "" %> value="1">Atendido</option>
+            <option <%- shift.id_estado=='2' ? "selected" : "" %> value="2">Esperando</option>
+            
+          </select>   
+        </div> 
+        
+        <div class="mb-3">
+            <label for="user" class="form-label">MOTIVO</label>
+            <input type="text" class="form-control" id="motivo" name="motivo" tabindex="5" value="<%= shift.motivo  %>">                        
+            </div>  
+
+      
+
+     
+                        </div>                                                              
+                        <button type="submit" class="btn btn-primary" tabindex="6">Guardar</button>
+                        <a href="/indexshift" class="btn btn-secondary">Cancelar</a>
+                        <button  type="reset">Resetear</button>
+                    </form>
+       
+                </div>
+            </div>     
+      </div>
+      <% } %>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>

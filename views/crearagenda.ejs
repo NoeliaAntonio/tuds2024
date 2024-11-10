@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
+    <title>CRUD de Agenda</title>
+</head>
+<body  style="background-color:powderblue;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+        
+    <nav class="navbar navbar-dark">      
+      </nav>            
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Crud de Usuario</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contacto">Contacto</a>
+              </li>  
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>                     
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+
+      <div class="container mt-4">
+     <tr>
+            <div class="card border-secondary" data-bs-theme="blue">  
+                <div class="card-header">Nuevo Registro de agenda</div>
+                <div class="card-body">
+
+   <h5>el id 9 es el dr.Marta Medina</h5> 
+   <h5>el id 10 es el dr.Diego Ostanelli</h5>      
+   <h5>el id 15 es el dr.Sergio porporato</h5>                  
+<!--ACA COMIENZA EL FORMULARIO DE AGENDA-->                 
+<form action="/saveagenda" method="POST" class="needs-validation" novalidate>
+
+  <div class="has-validation">
+    <label for="user" class="form-label">Descripcion</label>
+    <input type="text" class="form-control" id="descripcion" name="descripcion" tabindex="1" required>
+    <div class="valid-feedback">
+    !Exelente!
+    </div>
+    <div class="invalid-feedback">
+    por favor escriba una descripcion
+    </div>
+    </div>
+
+    <div class="has-validation">
+      <label for="user" class="form-label">ID_Doctor</label>
+      <select id="id_doctor" name="id_doctor"  tabindex="2" >
+        <option value="9" selected>Martha Medina</option>
+        <option value="10" selected>Diego Ostanelli</option>
+        <option value="15" selected>Sergio Porporato</option>
+      </select>
+      </div>
+
+<div class="has-validation">
+<label for="agenda" class="form-label">ID_PACIENTE</label>
+<select id="id_paciente" name="id_paciente"  tabindex="3" >
+ 
+ <option value="1" selected>Matilda Andrada</option>
+ <option value="11" selected>Malena Corte</option>
+</select>
+</div> 
+
+
+
+<div class="mb-3">
+  <label for="shift" class="form-label">ID_Shift</label>
+  <label>cantidad de turnos</label>
+  <select id="id_shift" name="id_shift"   value="" tabindex="4">
+    <option  value="1">1</option>
+    <option value="2">2</option>
+    <option  value="3">3</option>
+    <option  value="4">4</option>
+    <option value="5">5</option>
+    <option  value="6">6</option>
+    <option  value="7">7</option>
+    <option value="8">8</option>
+    <option  value="9">9</option>
+    <option  value="10">10</option>
+  </select>                       
+  </div>
+
+
+
+<div class="has-validation">
+<label for="user" class="form-label">Consulta</label>
+<input type="text" class="form-control" id="consulta" name="consulta" tabindex="5" required>
+<div class="valid-feedback">
+!Exelente!
+</div>
+<div class="invalid-feedback">
+por favor escriba una consulta
+</div>
+</div>
+
+
+
+
+<button type="submit" class="btn btn-primary" tabindex="6">Guardar</button>
+<a href="/indexagenda" class="btn btn-secondary">Cancelar</a>
+<button  type="reset">Resetear</button>
+
+
+</form>
+</div>
+</div>
+</tr>        
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
+
+</html>
+

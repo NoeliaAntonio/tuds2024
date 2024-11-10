@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mi pagina de prueba</title>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.1/css/bulma.min.css" >
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.bulma.css">
+<style>
+body {
+    background-image: url('https://www.lavoz.com.ar/resizer/v2/R5QW7KJY5RFWXMEMM2ZLKV4NHQ.jpg?quality=75&smart=true&auth=5d41ccddd903b70ca55847dcf1b1d6b39fe1964e88087bb76716e820688a5e39&width=980&height=640');
+}
+</style>
+</head>
+<body>
+<!--aca cominza el html del datatable-->
+    <div>
+    <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item" role="presentation">
+    <button class="nav-link active" href="#tab-table1" data-bs-toggle="tab" data-bs-target="#tab-table1">30/10/2024</button></li>
+    <li><button class="nav-link" href="#tab-table2" data-bs-toggle="tab" data-bs-target="#tab-table2">31/10/24</button></li>
+    <li><button class="nav-link" href="#tab-table3" data-bs-toggle="tab" data-bs-target="#tab-table2">01/11/24</button></li>
+    </ul>
+    </ul>
+    <!--aca terminan las solapas -->
+        <div class="tab-content pt-2">
+            <div class="tab-pane show active" id="tab-table1">
+                <table id="myTable1" class="table table-striped table-bordered" cellspacing="0" width="100%"  class="hover" class="table is-striped">
+                    <thead>
+                        <tr >
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Alergia</th>
+                            <th scope="col">Importancia</th>
+                            <th scope="col">Desde </th>
+                            <th scope="col">Hasta</th> 
+                            <th scope="col">Fecha</th> 
+                            <th scope="col">habito</th> 
+                            <th scope="col">medicamento</th> 
+                            <th scope="col">evolucion</th> 
+                            <th scope="col">diagnostico</th> 
+                            <th scope="col">estado</th> 
+                            <th scope="col">Ver Historia clinica</th>     
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+           
+          
+ <div class="tab-pane" id="tab-table2">
+<table id="myTable2" class="table table-striped table-bordered" cellspacing="0" width="100%">
+<thead>
+    <tr >
+        <th scope="col">Fecha</th>
+        <th scope="col">Alergia</th>
+        <th scope="col">Importancia</th>
+        <th scope="col">Desde </th>
+        <th scope="col">Hasta</th> 
+        <th scope="col">Fecha</th> 
+        <th scope="col">habito</th> 
+        <th scope="col">medicamento</th> 
+        <th scope="col">evolucion</th> 
+        <th scope="col">diagnostico</th> 
+        <th scope="col">estado</th> 
+        <th scope="col">Ver Historia clinica</th>     
+    </tr>
+</thead>
+</table>
+</div>
+
+
+        </div>
+    </div>
+<!--aca termina el html del datatable-->
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+<script> src="https://cdn.datatables.net/2.1.8/js/dataTables.js" </script>
+<script>src="https://cdn.datatables.net/2.1.8/js/dataTables.js"</script>
+<script>src="https://cdn.datatables.net/2.1.8/js/dataTables.bulma.js" </script>
+
+<!--aca comienza el datatable de javascrip-->
+<script>
+    // Escuche el cambio de pestaña Bootstrap
+document.querySelectorAll('button[data-bs-toggle="tab"]').forEach((el) => {
+    el.addEventListener('shown.bs.tab', () => {
+        DataTable.tables({ visible: true, api: true }).columns.adjust();
+    });
+});
+ 
+new DataTable('table.table', {
+    ajax:  {
+                  url: "/datamenuhistoriaclinica",//esta en el router
+                  dataSrc: ""
+              }, 
+               
+              columns: [ 
+                { data: 'fecha'/*,render: DataTable.render.date()*/},
+                { data: 'alergia'/*,visible:false */},
+                { data: 'importancia'},
+                { data: 'alergiadesde'/*,render: DataTable.render.date()*/},
+                { data: 'alergiahasta'/*,render: DataTable.render.date()*/},
+                { data: 'habito'},
+                { data: 'medicamento'},
+                { data: 'evolucion'},
+                { data: 'diagnostico'},
+                { data: 'estado'},
+                { data: null,
+                      "render": function (datamenuhistoriaclinica) { //la funcion data esta en router.js
+                        return '<a href="/editaragenda/'+dataagendas.id+'"class="btn btn-info"><i class="fas fa-edit"></i></a><a onclick="confirmar('+dataagendas.id+')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>'                           
+                        }//la funcion edit esta en router.js
+                  }                                    
+              ],
+              pageLength : 5,
+              lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']]     
+            }); 
+          
+            
+   
+    
+
+ 
+// Aplicar una búsqueda a la segunda tabla para la demostración
+new DataTable.Api('#myTable2').search('New York').draw();
+
+
+
+</script>
+<!--aca termina el datatable del javascript-->
+
+<!--aca comienza el ajax-->
+
+<!--aca termina el ajax-->
+
+
+
+<script>
+    $(document).on('shown.bs.tab', 'a[data-toggle="tab"]', function (e) {<font></font>
+    $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();<font></font>
+});<font></font>
+</script>
+
+
+
+</body>
+</html>

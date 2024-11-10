@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="styles.css" rel="stylesheet">
+    <title>CRUD de editar especialidad</title>
+</head>
+
+<body style="background-color:powderblue;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container-fluid">        
+<nav class="navbar navbar-dark"></nav> 
+          
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+<a class="nav-link active" aria-current="page" href="/">Usuario Editar</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/contacto">Contacto</a>
+</li>                     
+</ul>
+</div>
+</div>
+</nav>
+<% if (especialidad) { %><!--esto viene de router en editarespecialidad-->
+<div class="container mt-4">
+<tr>
+<div class="card border-secondary" data-bs-theme="blue">  
+<div class="card-header">Nueva Edicion de especialidad</div>
+<div class="card-body">
+
+    <form action="/updateespecialidad" method="POST"  class="needs-validation" novalidate >
+    <input id="id" name="id" value="<%= especialidad.id %>" hidden><!--patient viene de la linea 37-->  
+
+    <div>
+    <label for="especialidad" class="form-label">Especialidad</label>
+    <select  id="nombre" name="nombre" value="" class="form-select"  tabindex="1" >
+    <option <%- especialidad.nombre=='No seleccionaste una especialidad' ? "selected" : "" %> value="No seleccionaste una especialidad">--Selecciona--</option>
+    <option <%- especialidad.nombre=="Alergia e Inmunología" ? "selected" : "" %> value="Alergia e Inmunología" selected>Alergia e Inmunología</option>
+    <option <%- especialidad.nombre=="Anatomía Patológica " ? "selected" : "" %> value="Anatomía Patológica" selected>Anatomía Patológica</option>
+    <option <%- especialidad.nombre=="Atención Integral de las Adicciones (Grupo GIA)" ? "selected" : "" %> value="Atención Integral de las Adicciones (Grupo GIA)">Atención Integral de las Adicciones (Grupo GIA)</option>
+    <option <%- especialidad.nombre=="Cardiología " ? "selected" : "" %> value="Cardiología">Cardiología</option>
+    <option <%- especialidad.nombre=="Cirugía " ? "selected" : "" %> value="Cirugía">Cirugía</option>
+    <option <%- especialidad.nombre=="Cirugía General " ? "selected" : "" %> value="Cirugía General">Cirugía General</option>
+    <option <%- especialidad.nombre=="Cirugía Plástica " ? "selected" : "" %> value="Cirugía Plástica">Cirugía Plástica</option>
+    <option <%- especialidad.nombre=="Clínica Médica " ? "selected" : "" %> value="Clínica Médica">Clínica Médica</option>
+    <option <%- especialidad.nombre=="Consultorios Externos " ? "selected" : "" %> value="Consultorios Externos">Consultorios Externos</option>
+    <option <%- especialidad.nombre=="Cuidados Intensivos " ? "selected" : "" %> value="Cuidados Intensivos">Cuidados Intensivos</option>
+    <option <%- especialidad.nombre=="Dermatología " ? "selected" : "" %> value="Dermatología">Dermatología</option>
+    <option <%- especialidad.nombre=="Diabetología " ? "selected" : "" %> value="Diabetología">Diabetología</option>
+    <option <%- especialidad.nombre=="Endocrinología " ? "selected" : "" %> value="Endocrinología">Endocrinología</option> 
+    <option <%- especialidad.nombre=="Gastroenterología y Endoscopías " ? "selected" : "" %> value="Gastroenterología y Endoscopías">Gastroenterología y Endoscopías</option>
+    <option <%- especialidad.nombre=="Ginecología " ? "selected" : "" %> value="Ginecología">Ginecología</option>
+    <option <%- especialidad.nombre=="Infectología " ? "selected" : "" %> value="Infectología">Infectología</option>  
+    <option <%- especialidad.nombre=="Nefrología " ? "selected" : "" %> value="Nefrología">Nefrología</option> 
+    <option <%- especialidad.nombre=="Neumonología " ? "selected" : "" %> value="Neumonología">Neumonología</option> 
+    <option <%- especialidad.nombre=="Odontología " ? "selected" : "" %> value="Odontología">Odontología</option> 
+    <option <%- especialidad.nombre=="Oftalmología " ? "selected" : "" %> value="Oftalmología">Oftalmología</option> 
+    <option <%- especialidad.nombre=="Oncología " ? "selected" : "" %> value="Oncología">Oncología</option>
+    <option <%- especialidad.nombre=="Otorrinolaringología " ? "selected" : "" %> value="Otorrinolaringología">Otorrinolaringología</option>  
+    <option <%- especialidad.nombre=="Pie Diabético " ? "selected" : "" %> value="Pie Diabético">Pie Diabético</option> 
+    <option <%- especialidad.nombre=="Reumatología " ? "selected" : "" %> value="Reumatología">Reumatología</option> 
+    <option <%- especialidad.nombre=="psicología " ? "selected" : "" %> value="psicología">psicología</option> 
+    <option <%- especialidad.nombre=="psiquiatría " ? "selected" : "" %> value="psiquiatría">psiquiatría</option> 
+    <option <%- especialidad.nombre=="psicopedagogía " ? "selected" : "" %> value="psicopedagogía">psicopedagogía</option>
+    <option <%- especialidad.nombre=="Urología " ? "selected" : "" %> value="Urología">Urología</option>
+    <option <%- especialidad.nombre=="Anatomía patológica " ? "selected" : "" %> value=" Anatomía patológica"> Anatomía patológica</option>
+    <option <%- especialidad.nombre=="Anestesiología " ? "selected" : "" %> value="Anestesiología">Anestesiología</option>
+    <option <%- especialidad.nombre=="Diagnóstico por imágenes " ? "selected" : "" %> value="Diagnóstico por imágenes">Diagnóstico por imágenes</option> 
+    <option <%- especialidad.nombre=="Oncología " ? "selected" : "" %> value="Oncología">Oncología</option>
+    <option <%- especialidad.nombre=="Otorrinolaringología " ? "selected" : "" %> value="Otorrinolaringología">Otorrinolaringología</option>
+    <option <%- especialidad.nombre=="Pediatría " ? "selected" : "" %> value="Pediatría">Pediatría</option>
+    <option <%- especialidad.nombre=="Gineco Obstetra " ? "selected" : "" %> value="Gineco Obstetra">Gineco Obstetra</option>
+    <option <%- especialidad.nombre=="Radiologia " ? "selected" : "" %> value="Radiologia">Radiologia</option>
+    <option <%- especialidad.nombre=="Medicina aromatica " ? "selected" : "" %> value="Medicina aromatica">Medicina Aromatica</option>
+    <option <%- especialidad.nombre=="Fisioterapia y medicina de rehabilitación " ? "selected" : "" %> value="Fisioterapia y medicina de rehabilitación">Fisioterapia y medicina de rehabilitación</option>
+    <option <%- especialidad.nombre=="Traumatología " ? "selected" : "" %> value="Traumatología"> Traumatología</option>                  
+    </select>
+</div>                      
+<div>
+<button type="submit" class="btn btn-primary" tabindex="2">Guardar</button>
+<a href="/especialidad" class="btn btn-secondary">Cancelar</a>
+<button  type="reset">Resetear</button>
+</div>
+</form>
+</div>
+</div>
+</tr>        
+</div>
+<% } %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (() => {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+  
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+  </script>
+</html>

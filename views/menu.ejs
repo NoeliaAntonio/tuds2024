@@ -1,0 +1,112 @@
+<html>
+	<head>
+		<title>Menu Desplegable</title>
+		<style type="text/css">
+			
+			* {
+				margin:0px;
+				padding:0px;
+			}
+			
+			#header {
+				margin:auto;
+				width:500px;
+				font-family:Arial, Helvetica, sans-serif;
+			}
+			
+			ul, ol {
+				list-style:none;
+			}
+			
+			.nav > li {
+				float:left;
+			}
+			
+			.nav li a {
+				background-color:#000;
+				color:#fff;
+				text-decoration:none;
+				padding:10px 12px;
+				display:block;
+			}
+			
+			.nav li a:hover {
+				background-color:#434343;
+			}
+			
+			.nav li ul {
+				display:none;
+				position:absolute;
+				min-width:140px;
+			}
+			
+			.nav li:hover > ul {
+				display:block;
+			}
+			
+			.nav li ul li {
+				position:relative;
+			}
+			
+			.nav li ul li ul {
+				right:-140px;
+				top:0px;
+			}
+			
+		</style>
+		<style>      
+			body{
+				   align-items: center;
+				   padding-top: 10px;
+				   padding-bottom: 40px;
+				   background-image: url(' https://inforges.es/wp-content/uploads/2022/03/servicio-consultoria-inforges.jpg');
+			   }
+		   </style>
+		   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	</head>
+	<body img src="https://www.lavoz.com.ar/resizer/v2/R5QW7KJY5RFWXMEMM2ZLKV4NHQ.jpg?quality=75&smart=true&auth=5d41ccddd903b70ca55847dcf1b1d6b39fe1964e88087bb76716e820688a5e39&width=980&height=640">
+		<a href="https://github.com/NoeliaAntonio"><i><box-icon type='logo' name='github'></box-icon></a></body></i></a>
+		<div id="header">
+			<ul class="nav">
+				<li><a href="/verdoctores">Inicio</a></li>
+				
+
+
+				<li><a href="">Secretaria</a>
+					<ul>
+					<li><a href="/paciente">paciente</a></li>
+					<li><a href="/doctor">Doctor</a></li>
+					<li><a href="/especialidad">Cargar especialidad</a></li>
+					<li><a href="/indexagenda">Cargar Agenda</a></li>
+					<li><a href="/indexshift">Cargar turno</a></li>
+					
+				    </ul>
+				</li>
+
+
+				<li><a href="">Doctor</a>
+					<ul>
+						<li><a href="/seleccionardoctor">ver agenda del doctor</a></li>
+					<!--	<li><a href="/agendadeldia">Agenda</a></li>
+						<li><a href="/agendadelmedico">Agenda del medico</a></li>-->
+						<li><a href="/menupacientes">Paciente</a></li>
+						<li><a href="/cargarevolucion1">Cargar Evolucion</a></li>
+					</ul>
+				</li>
+
+
+				<li><a href="">Publico</a>
+				     <ul>
+						<li><a href="/vermedicoespecialidad">especialidad </a></li>
+					</ul>
+                </li>
+
+
+				<li><a href="/contacto">Contacto</a></li>
+				<li><a href="/index2cruduser">Admin</a></li>
+			</ul>
+		</div>
+		<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+	</body>
+
+</html>

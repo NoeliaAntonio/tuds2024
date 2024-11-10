@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
+<title>Editar Alergia</title>
+</head>
+<body  style="background-color:powderblue;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container-fluid">
+
+<nav class="navbar navbar-dark">      
+</nav>            
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+<a class="nav-link active" aria-current="page" href="/">Crud de Usuario</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/contacto">Contacto</a>
+</li>  
+<li class="nav-item">
+<a class="nav-link" href="/login">Login</a>
+</li>                     
+</ul>
+
+</div>
+</div>
+</nav>
+<% if (alergia) { %>
+      <div class="container mt-4">
+     <tr>
+            <div class="card border-secondary" data-bs-theme="blue">  
+                <div class="card-header">Nuevo Registro de Alergia</div>
+                <div class="card-body">
+
+                
+
+<form action="/updatealergia" method="POST" class="needs-validation" novalidate>
+    <input id="id" name="id" value="<%= alergia.id %>" hidden>
+<div class="has-validation">
+<label for="user" class="form-label">Nombre</label>
+<select id="nombre" name="nombre" class="form-select"  tabindex="1" >
+    <option  <%- alergia.nombre=='Alergia alimentaria' ? "selected" : "" %> value="Alergia alimentaria" selected>Alergia alimentaria</option>
+    <option  <%- alergia.nombre=='Alergia a fármacos' ? "selected" : "" %> value="Alergia a fármacos" selected>Alergia a fármacos</option>
+    <option  <%- alergia.nombre=='Asma alérgico' ? "selected" : "" %> value="Asma alérgico" selected>Asma alérgico</option>
+    <option  <%- alergia.nombre=='Dermatitis atópica' ? "selected" : "" %> value="Dermatitis atópica">Dermatitis atópica</option>
+    <option  <%- alergia.nombre=='Poliposis nasal' ? "selected" : "" %> value="Poliposis nasal">Poliposis nasal</option>
+    <option  <%- alergia.nombre=='Rinitis alérgica' ? "selected" : "" %> value="Rinitis alérgica">Rinitis alérgica</option> 
+    <option  <%- alergia.nombre=='Urticaria crónica' ? "selected" : "" %> value="Urticaria crónica">Urticaria crónica</option>                    
+</select>
+<div class="valid-feedback">
+!Exelente!
+</div>
+<div class="invalid-feedback">
+por favor escriba el nombre de la  alergia
+</div>  
+</div> 
+
+
+<div class="has-validation">
+<label for="user" class="form-label">Importancia</label>
+<select id="importancia" name="importancia" class="form-select"   tabindex="2" required>
+    <option <%- alergia.importancia=='leve' ? "selected" : "" %> value="leve" selected>Leve</option>
+    <option <%- alergia.importancia=='normal' ? "selected" : "" %>value="normal" selected>Normal</option>
+    <option <%- alergia.importancia=='alta' ? "selected" : "" %> value="alta" selected>Alta</option>
+</select>
+<div class="valid-feedback">
+!Exelente!
+</div>
+<div class="invalid-feedback">
+por favor seleccione el nivel de importancia
+</div>
+</div>
+
+
+<div class="mb-3">
+<label for="user"  class="form-label">Desde</label>
+<input type="date" class="form-control" id="desde" name="desde" tabindex="3" value="<%= alergia.desde  %>" required>
+<div class="valid-feedback">
+!Exelente!
+</div>
+<div class="invalid-feedback">
+por favor escriba el comienzo de la alergia
+</div>
+</div> 
+
+<div class="mb-3">
+<label for="alergia"  class="form-label">Hasta</label>
+<input type="date" class="form-control" id="hasta" name="hasta" tabindex="4" value="<%= alergia.hasta  %>" required>
+<div class="valid-feedback">
+!Exelente!
+</div>
+<div class="invalid-feedback">
+por favor escriba cuando termino la alergia
+</div>
+</div> 
+                            
+                      
+                                
+<button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+<a href="/indexalergia" class="btn btn-secondary">Cancelar</a>
+<button  type="reset">Resetear</button>
+
+
+                       
+                    
+                  </form>
+                </div>
+            </div>
+          </tr>        
+      </div>
+      <% } %>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
+
+</html>

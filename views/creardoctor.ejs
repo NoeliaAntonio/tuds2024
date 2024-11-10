@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
+    <title>CRUD de Crear doctor</title>
+</head>
+<body style="background-color:powderblue;">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        
+    <nav class="navbar navbar-dark">   
+    </nav>            
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+        </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/pacientes">Crud de paciente</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/contacto">Contacto</a>
+        </li>  
+        <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+        </li>                     
+        </ul>
+            
+        </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+    <tr>
+    <div class="card border-secondary" data-bs-theme="blue">  
+    <div class="card-header">Nuevo Registro de Doctor</div>
+    <div class="card-body">
+
+        <form action="/savedoctor" method="POST" class="needs-validation" novalidate>
+          <div class="has-validation">
+          <label for="doctor" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" required>
+          <div class="valid-feedback">
+             !Exelente!
+          </div>
+          <div class="invalid-feedback">
+            por favor escriba el nombre
+          </div>
+          </div>
+
+          <div>
+          <label for="doctor" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="apellido" name="apellido" tabindex="2" required>
+          </div>
+          <div>
+          <label for="doctor" class="form-label">Email</label>
+          <input type="text" class="form-control" id="email" name="email" tabindex="4" required>
+          </div>
+
+          <div>
+          <label for="doctor" class="form-label">Fecha de Nacimiento</label>
+          <input type="date" class="form-control" id="nacimiento" name="nacimiento" tabindex="5" required>
+          </div>
+          <div>
+            <fieldset>
+            <legend>Selecciona el Genero:</legend>
+            <div>
+            <input type="radio" id="masculino" name="genero" value="masculino" checked tabindex="7" required>
+            <label for="masculino">Masculino</label>
+            </div>
+                            
+            <div>
+            <input type="radio" id="femenino" name="genero" value="femenino" />
+            <label for="femenino">Femenino</label>
+            </div>
+                            
+            <div>
+            <input type="radio" id="indefinido" name="genero" value="indefinido" />
+            <label for="indefinido">Indefinido</label>
+            </div>
+            </fieldset>
+            </div>
+            <div>
+            <label for="doctor" class="form-label">Direccion</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" tabindex="4" required>
+            </div>  
+         
+          
+
+          <div>
+          <label for="doctor" class="form-label">Celular</label>
+          <input type="number" class="form-control" id="celular" name="celular" tabindex="10" required>
+          </div>
+           <!--
+          <div>
+          <label >Elige una foto de perfil:</label>
+          <input type="file" id="imagen" name="imagen" accept="image/png, image/jpeg" />
+        </div>-->
+        <div class="form-group">
+          <label>Avatar</label>
+          <div class="profile-upload">
+            <div class="upload-img">
+              <img alt="" src="/assets/img/user.jpg">
+            </div>
+            <div class="upload-input">
+              <input type="file" class="form-control" name="imagen" id="imagen">
+            </div>
+          </div>
+        </div>
+
+          <div>
+            <label for="doctor" class="form-label">Sucursal</label>
+            <input type="text" class="form-control" id="sucursal" name="sucursal" tabindex="12" required>
+            </div>
+            <div>
+            <label for="doctor" class="form-label">Biografia</label>
+            <input type="text" class="form-control" id="biografia" name="biografia" tabindex="13" required>
+            </div>
+            <div>
+            <div>
+            <label for="doctor" class="form-label">Matricula</label>
+            <input type="text" class="form-control" id="matricula" name="matricula" tabindex="15" required>
+            </div>  
+            <div>
+            <label for="doctor" class="form-label">DNI</label>
+            <input type="number" class="form-control" id="dni" name="dni" tabindex="16" required>
+            </div> 
+            <br>         
+          <button type="submit" class="btn btn-primary" tabindex="17">Guardar</button><!--el submit manda todos los datos del formulario al metodo savedoctor que esta en el cruddoctor.js-->
+          <a href="/doctor" class="btn btn-secondary">Cancelar</a><!--te redirige a la pagina principal de doctor-->
+          <button  type="reset">Resetear</button>
+          
+        </form>
+                </div>
+            </div>
+          </tr>        
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+
+<script>
+  //Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
+(() => {
+  'use strict'
+
+  // Obtenga todos los formularios a los que queremos aplicar estilos de validación Bootstrap personalizados
+
+  const forms = document.querySelectorAll('.needs-validation')
+
+  //Bucle sobre ellos y evitar la presentación
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
+
+</html>
