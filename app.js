@@ -10,6 +10,7 @@ const Especialidad = require('./models/specialty');
 const Estado = require('./models/state');
 const Turno = require('./models/shift');
 require ('./models/asosciaciones');
+var render = require('render');
 
 
 
@@ -20,6 +21,7 @@ app.use(express.json());//además le decimos a express que vamos a usar json
 
 //Establecemos las rutas para las VISTAS usando un archivo aparte (router.js) y la clase Router()
 app.use('/', require('./routes/router'));
+
 
 //3- Invocamos a dotenv
 const dotenv = require('dotenv');
@@ -179,14 +181,8 @@ app.post('/registrar', [
 })
 
 
-
+app.get("/", (req, res) => res.send("Express on Vercel"));
 //fin de la validacion del formulario de ejs
-
-
-
-
-
-
 
 app.listen(900, (req, res)=>{
     console.log('SERVER RUNNING IN http://localhost:900');

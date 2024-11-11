@@ -57,3 +57,25 @@ Estas funcionabilidades deberán estar subidas a un servidor (en internet).
 
 Si el tiempo lo permite cabe la posibilidad que estas funciones tengan que ser presentadas en clase (la última semana)
 ------------------------------------------------------------------------------
+base de datos subida al servidor https://console.clever-cloud.com/
+Host:bt8h3ry8eleq9vov8dlo-mysql.services.clever-cloud.com
+Database Name:bt8h3ry8eleq9vov8dlo
+User:udghsppxugc61kr8
+Password:hYZEjYfneSJPDLgSRuMb
+🔐
+Port:3306
+Connection URI
+mysql://udghsppxugc61kr8:hYZEjYfneSJPDLgSRuMb@bt8h3ry8eleq9vov8dlo-mysql.services.clever-cloud.com:3306/bt8h3ry8eleq9vov8dlo
+🔐
+MySQL CLI
+mysql -h bt8h3ry8eleq9vov8dlo-mysql.services.clever-cloud.com -P 3306 -u udghsppxugc61kr8 -p bt8h3ry8eleq9vov8dlo
+Reset Database
+Click this button to reset your database. Every table will be deleted. Your backups will remain untouched.
+-----------------------------------------------------------------------------------------------------
+MYSQL_ADDON_HOST=bt8h3ry8eleq9vov8dlo-mysql.services.clever-cloud.com
+MYSQL_ADDON_DB=bt8h3ry8eleq9vov8dlo
+MYSQL_ADDON_USER=udghsppxugc61kr8
+MYSQL_ADDON_PORT=3306
+MYSQL_ADDON_PASSWORD=hYZEjYfneSJPDLgSRuMb
+MYSQL_ADDON_URI=mysql://udghsppxugc61kr8:hYZEjYfneSJPDLgSRuMb@bt8h3ry8eleq9vov8dlo-mysql.services.clever-cloud.com:3306/bt8h3ry8eleq9vov8dlo
+---------------------------------------------------------------------------------------------

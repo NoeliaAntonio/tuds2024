@@ -10,6 +10,7 @@
   "author": "Noelia Antonio",
   "license": "ISC",
   "dependencies": {
+    "@remba/create-vercel-json-nodejs": "^1.0.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",
@@ -19,12 +20,14 @@
     "express": "^4.21.0",
     "express-session": "^1.18.1",
     "express-validator": "^7.2.0",
-    "faker": "^6.6.6",
+    "faker": "^5.5.3",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.3",
+    "render": "^0.1.4",
     "sequelize": "^6.37.4"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "vercel": "^32.3.0"
   }
 }
