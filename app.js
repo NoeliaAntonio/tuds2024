@@ -37,7 +37,8 @@ app.use(express.urlencoded({extended:true}))
 
 
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+//app.get("/", (req, res) => res.send("Express on Vercel"));
+app.get("/", (req, res) => res.render('index'));
 //fin de la validacion del formulario de ejs
 
 app.listen(900, (req, res)=>{
