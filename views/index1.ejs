@@ -36,8 +36,8 @@
           </form>
           <!-- Toasts -->
            <!-- TOASTS -->
-           <% if(typeof validaciones != 'undefined') { %><!-- recibo el arreglo -->
-            <% validaciones.forEach( (validacion)=> { %>   <!-- recorro  el arreglo -->              
+           <!--<% if(typeof validaciones != 'undefined') { %>--><!-- recibo el arreglo -->
+           <!-- <% validaciones.forEach( (validacion)=> { %> -->  <!-- recorro  el arreglo -->              
               <div class="toast-container">
             <div class="toast" role="alert" aria-live="assertive" data-bs-autohide="false">
                 <div class="toast-header">
@@ -46,12 +46,12 @@
                   <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
                 <div class="toast-body">
-                  <strong><%= validacion.msg %></strong> 
+                  <strong><!--<%= validacion.msg %>--></strong> 
                 </div>
             </div>
               </div>              
-              <% }) %>
-          <% } %>
+            <!--  <% }) %> 
+          <% } %>-->
 
           <!-- Alerts -->
           <!-- <% if(typeof validaciones != 'undefined') { %>
