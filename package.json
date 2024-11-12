@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js",
     "start": "node app.js",
-     "build": "[my-framework] build --output public"
+    "build": "[my-framework] build --output public"
   },
   "author": "Noelia Antonio",
   "license": "ISC",
@@ -26,7 +26,8 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.11.3",
     "render": "^0.1.4",
-    "sequelize": "^6.37.4"
+    "sequelize": "^6.37.4",
+    "vercel.json": "^0.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.7",

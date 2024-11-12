@@ -1,4 +1,4 @@
 {
-  "source": "/feedback/:id",
-  "destination": "/api/feedback/:id"
-}
+    "source": "/feedback/:id",
+    "destination": "/api/feedback/:id"
+  }
