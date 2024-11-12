@@ -1,4 +1,4 @@
 {
-  "source": "/feedback/(?!general)",
-  "destination": "/api/feedback/general"
+  "source": "/feedback/:id",
+  "destination": "/api/feedback/:id"
 }
