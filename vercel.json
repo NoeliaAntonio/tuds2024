@@ -1,9 +1,15 @@
 {
+  "version":2,
   "builds": [
     {
-      "src": "./index.js",
+      "src": "menu.js",
       "use": "@vercel/node"
     }
   ],
-  "routes": [{ "src": "/product/(?<id>[^/]+)", "dest": "/api/product?id=$id" }]
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/menu.js"
+    }
+  ]
 }
