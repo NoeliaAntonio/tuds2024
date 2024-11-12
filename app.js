@@ -41,8 +41,8 @@ app.use(express.urlencoded({extended:true}))
 app.get("/", (req, res) => res.render('menu.ejs'));
 //fin de la validacion del formulario de ejs
 
-app.listen(900, (req, res)=>{
-    console.log('SERVER RUNNING IN http://localhost:900');
+app.listen(3000, (req, res)=>{
+    console.log('SERVER RUNNING IN http://localhost:3000');
 });
 
 
