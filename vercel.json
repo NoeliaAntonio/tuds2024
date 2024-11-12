@@ -1,5 +1,14 @@
 {
-    "scripts": {
-      "build": "[my-framework] build --output public"
+  "builds": [
+    {
+      "src": "./index.js",
+      "use": "@vercel/node"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
+}
