@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-11-2024 a las 23:39:08
+-- Tiempo de generación: 14-11-2024 a las 03:10:14
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,9 +41,7 @@ CREATE TABLE `agendas` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
   `id_doctor` int(11) DEFAULT NULL,
-  `id_paciente` int(11) NOT NULL,
-  `id_shift` int(11) NOT NULL,
-  `consulta` varchar(255) DEFAULT NULL,
+  `consulta` varchar(50) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -52,11 +50,13 @@ CREATE TABLE `agendas` (
 -- Volcado de datos para la tabla `agendas`
 --
 
-INSERT INTO `agendas` (`id`, `descripcion`, `id_doctor`, `id_paciente`, `id_shift`, `consulta`, `createdAt`, `updatedAt`) VALUES
-(1, 'turno comun', 9, 1, 1, 'Cardiaca', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'turno comun', 15, 11, 1, 'Pediatrica', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'turno comun', 15, 11, 2, 'picazon', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'sobre turno', 15, 11, 3, 'pediatrica', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `agendas` (`id`, `descripcion`, `id_doctor`, `consulta`, `createdAt`, `updatedAt`) VALUES
+(5, 'turno comun', 15, 'clinicas', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'turno comun', 9, 'Pediatrica', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'turno comun', 10, 'dentista', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 'turno comun', 18, 'clinica medica', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 'turno comun', 17, 'diagnostico por imagen', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 'turno comun', 19, 'clinica', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -120,7 +120,10 @@ CREATE TABLE `doctors` (
 INSERT INTO `doctors` (`id`, `nombre`, `apellido`, `email`, `nacimiento`, `genero`, `direccion`, `celular`, `imagen`, `sucursal`, `biografia`, `matricula`, `dni`, `createdAt`, `updatedAt`) VALUES
 (9, 'Martha', 'Medina', 'medina@gmail.com', '1991-05-08', 'femenino', 'alma fuerte 376', '234333', 'doctores.webp', 'av.illia 345', 'el mejor', 'a23', 112233, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (10, 'Diego ', 'Ostanelli', 'diego@gmail.com', '1999-06-08', 'masculino', 'alma fuerte 4567', '2665009988', 'doctores.webp', 'av.illia 45', '--', 'erd', 899, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(15, 'Sergio ', 'Porporato', 'porporato@gmail.com', '1949-06-07', 'masculino', 'costanera sur 123', '2665771010', 'doctores.webp', 'consultorio plaza', '---', 'yhjki23', 300001456, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(15, 'Sergio ', 'Porporato', 'porporato@gmail.com', '1949-06-07', 'masculino', 'costanera sur 123', '2665771010', 'doctores.webp', 'consultorio plaza', '---', 'yhjki23', 300001456, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 'Amadeo', 'Pastorotu', 'amadeo@gmail.com', '2024-11-03', 'masculino', 'Las Golondrinas 345', '2665882099', 'doctores.webp', 'av.illia 45', '---', 'gt56', 23490, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 'FELIPE', 'ABAYAY', 'contrataciones@cmsanluis.com', '1973-02-13', 'masculino', 'BALCARCE Nro 739 - San Luis', '2664422029', 'doctores.webp', 'av.illia 45', '--', '--re', 10101111, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 'ROSA', 'ABDALA', 'gabyrabdala@yahoo.com.ar', '1983-06-07', 'femenino', 'ITUZAINGO Nro 1074 - San Luis', '2664441544', 'doctores.webp', 'av.illia 45', '--', 'hy67', 11001112, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -209,7 +212,11 @@ CREATE TABLE `patients` (
 
 INSERT INTO `patients` (`id`, `nombre`, `apellido`, `email`, `fecha_de_ingreso`, `celular`, `genero`, `nacionalidad`, `provincia`, `localidad`, `dni`, `estadocivil`, `createdAt`, `updatedAt`) VALUES
 (1, 'Matilda', 'Andrada', 'andrada@gmail.com', '1989-06-05', '2665555544', 'femenino', 'AR', 'SAN LUIS', 'Villa mercedez', 123321, 'Casado', '2024-11-02 14:25:00', '2024-11-02 14:25:00'),
-(11, 'Malena', 'Corte', 'malen@gmail.com', '1982-06-07', '23341567', 'femenino', 'AR', 'SAN LUIS', 'Villa Larca', 5673, 'soltero', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(11, 'Malena', 'Corte', 'malen@gmail.com', '1982-06-07', '23341567', 'femenino', 'AR', 'SAN LUIS', 'Villa Larca', 5673, 'soltero', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, ' MARIANA ', 'ADARO', 'marianaadaro@hotmail.com', '1981-01-12', '2665123532', 'femenino', 'AR', 'SAN LUIS', 'San Luis', 2345671, 'soltero', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 'SUSANA', 'AGOSTI', 'convenios@cmsanluis.com', '1985-05-06', '2664441544', 'femenino', 'AR', 'SAN LUIS', 'San Luis', 56781, 'soltero', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 'OSCAR', 'AIRASCA', ' oscarat.6@hotmail.com', '2024-11-13', '02664423954', 'masculino', 'AR', 'SAN LUIS', 'San Luis', 3459013, 'soltero', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 'FERNANDO', 'FERNANDEZ', ' roxanarrieta@hotmail.com', '2024-11-13', '2664681476', 'masculino', 'AR', 'SAN LUIS', 'San Luis', 56710, 'soltero', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Disparadores `patients`
@@ -299,6 +306,8 @@ INSERT INTO `sequelizemeta` (`name`) VALUES
 
 CREATE TABLE `shifts` (
   `id` int(11) NOT NULL,
+  `id_agenda` int(11) NOT NULL,
+  `id_paciente` int(11) NOT NULL,
   `secuencia` varchar(255) DEFAULT NULL,
   `fecha` varchar(255) DEFAULT NULL,
   `hora` varchar(255) DEFAULT NULL,
@@ -312,17 +321,17 @@ CREATE TABLE `shifts` (
 -- Volcado de datos para la tabla `shifts`
 --
 
-INSERT INTO `shifts` (`id`, `secuencia`, `fecha`, `hora`, `id_estado`, `motivo`, `createdAt`, `updatedAt`) VALUES
-(1, '1', '2024-11-08', '08:00', 2, 'dolor de cabeza', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, '2', '2024-11-08', '08:30', 2, 'dolor de cabeza', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, '3', '2024-11-08', '09:00', 2, 'control ', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, '4', '2024-11-08', '09:30', 2, 'alergia', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, '5', '2024-11-08', '10:00', 2, 'de control', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, '6', '2024-11-08', '10:30', 2, 'clinico', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, '7', '2024-11-08', '11:00', 2, 'control', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(8, '8', '2024-11-08', '11:30', 2, 'clinico', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(9, '9', '2024-11-08', '11:30', 2, 'tos cronica', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(10, '10', '2024-11-08', '12:00', 2, 'dolor de cabeza', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `shifts` (`id`, `id_agenda`, `id_paciente`, `secuencia`, `fecha`, `hora`, `id_estado`, `motivo`, `createdAt`, `updatedAt`) VALUES
+(11, 6, 11, '1', '2024-11-13', '08:00', 1, 'clinicos', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 5, 12, '1', '2024-11-25', '08:00', 2, 'clinico', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 9, 12, '1', '2024-11-13', '10:00', 2, 'clinico', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 5, 13, '2', '2024-11-14', '08:30', 2, 'dolor de rodilla', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 5, 15, '3', '2024-11-13', '09:00', 2, 'clinico', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 6, 1, '2', '2024-11-13', '08:30', 2, 'clinico', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 7, 1, '1', '2024-11-13', '08:00', 2, 'clinico', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 7, 11, '2', '2024-11-13', '08:30', 2, 'clinico', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, 10, 1, '1', '2024-11-13', '08:00', 2, 'clinico', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(21, 8, 14, '6', '2024-11-25', '09:20', 2, 'tos cronica', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -345,7 +354,12 @@ CREATE TABLE `specialtys` (
 INSERT INTO `specialtys` (`id`, `especialidad`, `id_doctor`, `createdAt`, `updatedAt`) VALUES
 (1, 'Cardiología', 9, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 'Pediatría', 9, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, ' Traumatología', 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(3, ' Traumatología', 15, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'Clínica Médica', 18, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'Consultorios Externos', 18, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Gastroenterología y Endoscopías', 18, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'Radiologia', 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 'Diagnóstico por imágenes', 17, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -398,9 +412,7 @@ INSERT INTO `users` (`id`, `user`, `name`, `rol`, `pass`) VALUES
 --
 ALTER TABLE `agendas`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_doctor` (`id_doctor`),
-  ADD KEY `id_paciente` (`id_paciente`),
-  ADD KEY `id_shift` (`id_shift`);
+  ADD KEY `id_doctor` (`id_doctor`);
 
 --
 -- Indices de la tabla `auditoriapaciente`
@@ -462,7 +474,9 @@ ALTER TABLE `sequelizemeta`
 --
 ALTER TABLE `shifts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_estado` (`id_estado`);
+  ADD KEY `id_estado` (`id_estado`),
+  ADD KEY `id_agenda` (`id_agenda`),
+  ADD KEY `id_paciente` (`id_paciente`);
 
 --
 -- Indices de la tabla `specialtys`
@@ -491,7 +505,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `agendas`
 --
 ALTER TABLE `agendas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `auditoriapaciente`
@@ -503,7 +517,7 @@ ALTER TABLE `auditoriapaciente`
 -- AUTO_INCREMENT de la tabla `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `historiaclinicas`
@@ -527,7 +541,7 @@ ALTER TABLE `horariomedicos`
 -- AUTO_INCREMENT de la tabla `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `registro`
@@ -539,13 +553,13 @@ ALTER TABLE `registro`
 -- AUTO_INCREMENT de la tabla `shifts`
 --
 ALTER TABLE `shifts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `specialtys`
 --
 ALTER TABLE `specialtys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `states`
@@ -567,9 +581,7 @@ ALTER TABLE `users`
 -- Filtros para la tabla `agendas`
 --
 ALTER TABLE `agendas`
-  ADD CONSTRAINT `agendas_ibfk_1` FOREIGN KEY (`id_doctor`) REFERENCES `doctors` (`id`),
-  ADD CONSTRAINT `agendas_ibfk_2` FOREIGN KEY (`id_paciente`) REFERENCES `patients` (`id`),
-  ADD CONSTRAINT `agendas_ibfk_3` FOREIGN KEY (`id_shift`) REFERENCES `shifts` (`id`);
+  ADD CONSTRAINT `agendas_ibfk_1` FOREIGN KEY (`id_doctor`) REFERENCES `doctors` (`id`);
 
 --
 -- Filtros para la tabla `historiaclinicas`
@@ -600,7 +612,9 @@ ALTER TABLE `registro`
 -- Filtros para la tabla `shifts`
 --
 ALTER TABLE `shifts`
-  ADD CONSTRAINT `shifts_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `states` (`id`);
+  ADD CONSTRAINT `shifts_ibfk_1` FOREIGN KEY (`id_estado`) REFERENCES `states` (`id`),
+  ADD CONSTRAINT `shifts_ibfk_2` FOREIGN KEY (`id_agenda`) REFERENCES `agendas` (`id`),
+  ADD CONSTRAINT `shifts_ibfk_3` FOREIGN KEY (`id_paciente`) REFERENCES `patients` (`id`);
 
 --
 -- Filtros para la tabla `specialtys`
