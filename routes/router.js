@@ -195,7 +195,16 @@ router.get('/mostrarturnoconeliddelmedico', (req, res)=>{
        }   
    })
 })
-
+//RUTA PARA MOSTRAR TODOS LOS horario del medico
+router.get('/indexhorariomedico', (req, res)=>{  //en la vista indexagenda.ejs va a mostrar todos los datos       
+    conexion.query('SELECT * FROM horariomedicos',(error, results)=>{
+       if(error){
+           throw error;
+       } else {                                                                
+           res.render('indexhorariomedico.ejs', {data:results});  //muestran los resultados de la informacion                                             
+       }   
+   })
+})
 
 
 //------------------------------------------------------------------------------//----//
@@ -515,9 +524,20 @@ router.get('/dataevolucion', (req, res)=>{
         }   
     })
 })
+//ruta para enviar los datos en formato json al axaj del datatable de diagnostico
+router.get('/datahorariomedico', (req, res)=>{     
+    conexion.query('SELECT h.id,h.id_doctor,d.nombre,d.apellido,h.fecha,h.hora,h.detalle FROM horariomedicos h INNER JOIN doctors d on(d.id=h.id_doctor);',(error, results)=>{
+        if(error){
+            throw error;
+        } else {                                                   
+            datahorariomedico = JSON.stringify(results);//es donde guarda un objeto doctor datadoctors
+            res.send(datahorariomedico);          
+        }   
+    })
+})
 
 
-
+//------------------------------------------------------------------------
 //RUTA QUE NOS LLEVA AL FORMULARIO PARA DAR DE ALTA UN NUEVO REGISTRO
 router.get('/create', (req,res)=>{
     res.render('create2cruduser');
@@ -799,9 +819,21 @@ router.get('/agendadefelipeabayay', (req,res)=>{
 router.get('/agendaderosaabdala', (req,res)=>{
     res.render('agendaderosaabdala.ejs');
 })
+//RUTA para ver 
+router.get('/indexhorariomedico', (req,res)=>{
+    res.render('indexhorariomedico.ejs');
+})
+//RUTA para ver 
+router.get('/crearhorariomedico', (req,res)=>{
+    res.render('crearhorariomedico.ejs');
+})
+//RUTA para ver 
+router.get('/editarhorariomedico', (req,res)=>{
+    res.render('editarhorariomedico.ejs');
+})
 
 
-
+//-----------------------------------------------------
 
 
 //RUTA PARA EDITAR UN REGISTRO SELECCIONADO DE LA TABLA USUARIOS
@@ -1022,7 +1054,17 @@ router.get('/mostraragenda/:id', (req,res)=>{    //este viene de la vista editar
     });
 });
 
-
+//RUTA PARA EDITAR UN horario medico
+router.get('/editarhorariomedico/:id', (req,res)=>{    //este viene de la vista editaragenda.ejs
+    const id = req.params.id;
+    conexion.query('SELECT * FROM horariomedicos WHERE id=?',[id] , (error, results) => {
+        if (error) {
+            throw error;
+        }else{            
+            res.render('editarhorariomedico.ejs', {horariomedico:results[0]});  //agenda es la variable que necesita el ajax para mostrar los datos        
+            }        
+    });
+});
 
 
 
@@ -1215,6 +1257,17 @@ router.get('/deletealergia/:id', (req, res) => {
         }
     })
 });
+//RUTA PARA ELIMINAR UN REGISTRO SELECCIONADO DE ALERGIA
+router.get('/deletehorariomedico/:id', (req, res) => {
+    const id = req.params.id;
+    conexion.query('DELETE FROM horariomedicos WHERE id = ?',[id], (error, results)=>{
+        if(error){
+            console.log(error);
+        }else{           
+            res.redirect('/indexhorariomedico'); //me redirige a indexagenda.ejs de la vista        
+        }
+    })
+});
 
 
 
@@ -1235,6 +1288,7 @@ const crudantecedente = require('../controllers/crudantecedente');
 const crudalergia = require('../controllers/crudalergia');
 const crudhistoriaclinica = require('../controllers/crudhistoriaclinica');
 const crudregistro = require('../controllers/crudregistro');
+const crudhorariomedico = require('../controllers/crudhorariomedico');
 const { json } = require('express');
 const habit = require('../models/habit');
 
@@ -1284,6 +1338,10 @@ router.post('/updatehistoriaclinica' ,crudhistoriaclinica.updatehistoriaclinica)
 
 router.post('/saveregistro' ,crudregistro.saveregistro);
 router.post('/updateregistro' ,crudregistro.updateregistro);
+
+router.post('/savehorariomedico' ,crudhorariomedico.savehorariomedico);
+router.post('/updatehorariomedico' ,crudhorariomedico.updatehorariomedico);
+
 
 
 module.exports = router;

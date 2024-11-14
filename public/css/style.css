@@ -483,3 +483,7 @@ body{
     background-color: lightblue;
     text-align: center;
   }
+
+  p{
+    text-decoration: line-through;
+    }

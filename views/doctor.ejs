@@ -78,8 +78,7 @@
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
   <script> 
-  //const datos = <%- JSON.stringify(data) %>;
-  //console.log(datos);
+
   $('#doctors').DataTable({    
     ajax: {
         url: "/datadoctors",//esta en el router
@@ -102,10 +101,10 @@
       { data: 'matricula'},
       { data: 'dni'},
 			{ data: null,
-            "render": function (datadoctors) { //la funcion data esta en router.js
-                return '<a href="/editardoctor/'+datadoctors.id+'"class="btn btn-info"><i class="fas fa-edit"></i></a><a onclick="confirmar('+datadoctors.id+')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>'                           
+        "render": function (datadoctors) { //la funcion data esta en router.js
+                return '<a href="/editardoctor/'+datadoctors.id+'"class="btn btn-info"><i class="fas fa-edit"></i></a>   <a onclick="confirmar('+datadoctors.id+')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>'                           
                 }//la funcion edit esta en router.js
-        }                                                                                                  //la funcion eliminar esta en routeer.js y le paso el parametro id                                  
+        }                                                                                                 //la funcion eliminar esta en routeer.js y le paso el parametro id                                  
     ],
     pageLength : 5,
     lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']]     
@@ -127,5 +126,7 @@
     });
   };
 </script>
+
+
 </body>
 </html>

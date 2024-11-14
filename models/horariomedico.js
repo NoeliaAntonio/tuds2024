@@ -1,4 +1,5 @@
 'use strict';
+const Datatype = require('faker/lib/datatype');
 const {
   Model
 } = require('sequelize');
@@ -14,8 +15,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   horariomedico.init({
+    id_doctor: Datatype.integer,
     fecha: DataTypes.STRING,
-    hora: DataTypes.STRING
+    hora: DataTypes.STRING,
+    detalle: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'horariomedico',

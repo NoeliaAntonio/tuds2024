@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         
-        <title>CRUD de Doctor</title>
+        <title> horarios disponibles</title>
         <style>      
           body{align-items: center;
                padding-top: 10px;
@@ -31,24 +31,8 @@
         <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="/">Usuario</a>
               </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/contacto">Contacto</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/login">Login</a>
-              </li> 
-              <li class="nav-item">
-                  <a class="nav-link" href="/pacientes">Pacientes</a>
-              </li>       
-              <li class="nav-item">
-                  <a class="nav-link" href="/doctor">Doctor</a>
-              </li>  
-              <li class="nav-item">
-                <a class="nav-link" href="/especialidad">Especialidad</a>
-            </li>  
-              <li class="nav-item">
-                  <a class="nav-link" href="/agenda">Agenda</a>
-              </li>  
+              
+              
                           
             </ul>            
             </div>
@@ -58,7 +42,7 @@
 
               
 <!--ACA EMPIEZA EL FORMULARIO-->
-        <h5>Agenda</h5>
+        <h5>Horario del medico</h5>
 
         
         <script>
@@ -75,22 +59,21 @@
           </script>    
 
 
-        <a href="/menu"><i><box-icon name='arrow-back'></box-icon></i></a>
+        <a href="/indexshift"><i><box-icon name='arrow-back'></box-icon></i></a>
 
         <div class="container">
-        <a href="/crearagenda" class="btn btn-primary mt-4" ><i class="fas fa-plus-square"></i></a> 
-        <a href="/vermedicoespecialidad" class="btn btn-primary mt-4" ><i><box-icon type='solid' name='tree-alt'></box-icon></i></a>    
-        <!--<a href="/verAgenda"-->
-        <a href="/indexshift" class="btn btn-primary mt-4"  value='Acepto!'><i><box-icon type='logo' name='netlify'></box-icon></i></a>
+       
+        <a href="/crearhorariomedico" class="btn btn-primary mt-4"  value='Acepto!'><i><box-icon type='logo' name='netlify'></box-icon></i></a>
         <table id="age" class="table table-bordered table-striped text-center mt-4" style="background-color:DodgerBlue;"><!--agendas es el nombre de la tabla que desues uso para el datatable-->
         <thead>
         <tr class="text-white" style="background-color:#6200ee;">
                   <th scope="col">id</th>
-                  <th scope="col">descripcion</th>
                   <th scope="col">id_doctor</th>
-                  <th scope="col">Dr.</th>
+                  <th scope="col">Nombre</th>
                   <th scope="col">Apellido</th>
-                  <th scope="col">Consullta</th>
+                  <th scope="col">fecha</th>
+                  <th scope="col">hora</th>
+                  <th scope="col">detalle</th>
                   <th scope="col">ACCIONES</th>
         </tr>
         </thead>
@@ -98,7 +81,7 @@
               </tbody> -->
         </table>
         </div>
-        <a href="/menu"><i><box-icon name='arrow-back'></box-icon></i></a>
+        <a href="/indexshift"><i><box-icon name='arrow-back'></box-icon></i></a>
         
 
 
@@ -114,25 +97,25 @@
        
         
         <script> 
-            //const datos = <%- JSON.stringify(data) %>;
-            //console.log(datos);
+            
             $('#age').DataTable({    
               ajax: {
-                  url: "/dataagendas",//esta en el router
+                  url: "/datahorariomedico",//esta en el router
                   dataSrc: ""
               }, 
                
               columns: [ 
-                { data: 'id'/*,visible:false*/},
-                { data: 'descripcion'/*,visible:false*/},
+                { data: 'id',visible:false},
                 { data: 'id_doctor',visible:false},
                 { data: 'nombre'},
                 { data: 'apellido'},
-                { data: 'consulta'},
+                { data: 'fecha'/*,visible:false*/},
+                { data: 'hora'},
+                { data: 'detalle'},
                  { data: null,
-                      "render": function (dataagendas) { //la funcion data esta en router.js
-                        return '<a href="/editaragenda/'+dataagendas.id+'"class="btn btn-info"><i class="fas fa-edit"></i></a>  <a onclick="confirmar('+dataagendas.id+')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>  '                           
-                        }//la funcion edit esta en router.js
+                      "render": function (datahorariomedico) { //la funcion data esta en router.js
+                return '<a href="/editarhorariomedico/'+datahorariomedico.id+'"class="btn btn-info"><i class="fas fa-edit"></i></a>  <a onclick="confirmar('+datahorariomedico.id+')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>'                           
+                }
                   }                                    
               ],
               pageLength : 5,
@@ -150,7 +133,7 @@
                   confirmButtonText: 'Confirmar'
                 }).then((result) => {
                   if (result.isConfirmed) {   
-                    window.location = '/deleteagenda/'+id;                              
+                    window.location = '/deletehorariomedico/'+id;                              
                   }
               });
             };
