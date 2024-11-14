@@ -28,7 +28,7 @@ exports.updateespecialidad = (req, res)=>{
         if(error){
             console.log(error);
         }else{           
-            res.redirect('/especialidad');         
+            res.redirect('/vermedicoespecialidad');         
         }
 });
 };

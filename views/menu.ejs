@@ -62,6 +62,101 @@
 				   background-image: url(' https://inforges.es/wp-content/uploads/2022/03/servicio-consultoria-inforges.jpg');
 			   }
 		   </style>
+<style>
+	body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+h2 {
+	font-size: 1.1em;
+	margin-top: 2em;
+  text-align: center;
+}
+main {
+	width: 80%;
+	margin: auto;
+}
+
+#modal {
+	background:rgba(#000,.9);
+	color: #2e1919;
+	position: fixed;
+	top: -100vh;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	transition: all .5s;
+	p {
+		width: 60%;
+		height: 40%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		margin: auto;
+		font-size: 1.5em;
+		text-align: center;
+	} 
+}
+
+#mostrar-modal {
+	display: none;
+	+ label {
+		background: steelblue;
+		display: table;
+		margin: auto;
+		color: #0c3b16;
+		line-height: 3;
+		padding: 0 1em;
+		text-transform: uppercase;
+		cursor: pointer;
+		&:hover {
+			background: darken(steelblue,10%);
+		}
+	}
+  &:checked { 
+    & ~ #modal {
+		  top: 0;
+	  }
+    & ~ #cerrar-modal + label {
+      display: block;
+    }
+  }
+}
+
+#cerrar-modal {
+	display: none;
+	+ label {
+		position: absolute;
+		top: 1em;
+		right: 1em;
+		z-index: 100;
+		color: #300202;
+		font-weight: bold;
+		cursor: pointer;
+    background: tomato;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-radius: 50%;
+    display: none;
+    transition: all .5s;
+	}
+	&:checked {
+     & ~ #modal {
+      top: -100vh;
+    }
+    & + label {
+      display: none;
+    }
+  }
+}
+</style>
+
 		   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 		</head>
 	<body img src="https://www.lavoz.com.ar/resizer/v2/R5QW7KJY5RFWXMEMM2ZLKV4NHQ.jpg?quality=75&smart=true&auth=5d41ccddd903b70ca55847dcf1b1d6b39fe1964e88087bb76716e820688a5e39&width=980&height=640">
@@ -74,8 +169,8 @@
 
 				<li><a href="">Secretaria</a>
 					<ul>
-					<li><a href="/paciente">paciente</a></li>
-					<li><a href="/doctor">Doctor</a></li>
+					<li><a href="/paciente">Cargar Paciente</a></li>
+					<li><a href="/doctor">Cargar Doctor</a></li>
 					<li><a href="/especialidad">Cargar especialidad</a></li>
 					<li><a href="/indexagenda">Cargar Agenda</a></li>
 					<li><a href="/indexshift">Cargar turno</a></li>
@@ -106,6 +201,20 @@
 				<li><a href="/index2cruduser">Admin</a></li>
 			</ul>
 		</div>
+
+  
+  <input type="radio" id="mostrar-modal" name="modal"/>
+  <label for="mostrar-modal">Mensaje</label>
+  <input type="radio" id="cerrar-modal" name="modal"/>
+  <label for="cerrar-modal">X</label>
+  <div id="modal">
+    <p> Donde quiera que se ama el arte de la medicina se ama también a la humanidad</p>
+  </div>
+
+
+
+
+
 		<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 	</body>
 

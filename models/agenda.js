@@ -16,8 +16,6 @@ module.exports = (sequelize, DataTypes) => {
     agenda.init({
     descripcion: DataTypes.STRING,
     id_doctor: DataTypes.INTEGER,
-    id_paciente: DataTypes.INTEGER,
-    id_shift: DataTypes.INTEGER,
     consulta:DataTypes.STRING,
 
   }, {

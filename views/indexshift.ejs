@@ -43,10 +43,40 @@
         </div>
       </nav>
 
-<h5>Turnos</h5>
-<h7>//1 es atendido//</h7>
-<h7>2 es esperando</h7>
-      
+      <a href="/indexagenda"><i><box-icon name='arrow-back'></box-icon></i></a>
+     
+<br>
+<!--este scrip me da la fecha actual-->
+<tr>
+    <th>  <script>
+        //<![CDATA[
+        var date = new Date();
+        var d  = date.getDate();
+        var day = (d < 10) ? '0' + d : d;
+        var m = date.getMonth() + 1;
+        var month = (m < 10) ? '0' + m : m;
+        var yy = date.getYear();
+        var year = (yy < 1000) ? yy + 1900 : yy;
+        document.write(day + "/" + month + "/" + year);
+        //]]>
+        </script>    
+</th>
+<th>
+
+      <!--en este scrip tengo la hora actual-->
+      <p id="display-time">
+        <script>
+            function myFunc()  {
+                var now = new Date();
+                var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+                document.getElementById('display-time').innerHTML = time;
+            }
+            setInterval(myFunc, 1000);
+        </script>
+        </p>
+      </th>
+      </tr>
+
       <div class="container"><!--crearshift es la vista crearshift.ejs-->
         <a href="/crearshift" class="btn btn-primary mt-4" onclick="alert('vas a crear un nuevo TURNO! Recuerda que 29-11-24 estoy de vacaciones')" value="Acepto!"><i class="fas fa-plus-square"></i></a>    
         <a href="/estado" class="btn btn-primary mt-4" onclick="alert('vas a cambiar el estado')" value="Acepto!"><i><box-icon type='logo' name='mongodb'></box-icon></i></a> 
@@ -54,6 +84,8 @@
         <thead>
           <tr class="text-white" style="background-color:#6200ee;">
             <th scope="col">ID</th>
+            <th scope="col">ID_agenda</th>
+            <th scope="col">id_paciente</th>
             <th scope="col">Nombre</th> 
             <th scope="col">Apellido</th> 
             <th scope="col">SECUENCIA</th> 
@@ -62,6 +94,9 @@
             <th scope="col">ID_ESTADO</th>
             <th scope="col">DESCRIPCION</th> 
             <th scope="col">MOTIVO</th> 
+            <th scope="col">id_doctor</th> 
+            <th scope="col">nombre</th> 
+            <th scope="col">apellido</th> 
             <th scope="col">ACCIONES</th>           
           </tr>
         </thead>
@@ -89,14 +124,19 @@
     },   
     columns: [ 
         {'data': 'id',visible:false},// visible:false esto hace que el id sea invisible   pero no me deja eliminar porque lo tengo con el id __ 'data':'id' ___    
+        {'data': 'id_agenda',visible:false},
+        {'data': 'id_paciente',visible:false},
         {'data': 'nombre'},
         {'data': 'apellido'},
-        {'data': 'secuencia'},
+        {'data': 'secuencia',visible:false},
         {'data': 'fecha'},
         {'data': 'hora'},
         {'data': 'id_estado',visible:false},
         {'data': 'descripcion'},
-        {'data': 'motivo'},          
+        {'data': 'motivo'},
+        {'data': 'id_doctor',visible:false},
+        {'data': 'nombred'},
+        {'data': 'apellidod'},          
         {"data": null,
             "render": function (datashift) { //la funcion data esta en router.js
                 return '<a href="/editarshift/'+datashift.id+'"class="btn btn-info"><i class="fas fa-edit"></i></a><a onclick="confirmar('+datashift.id+')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>'                           

@@ -43,7 +43,7 @@
 <!--ACA COMIENZA EL FORMULARIO DE AGENDA-->                 
 <form action="/updateagenda" method="POST" class="needs-validation" novalidate>
   <input id="id" name="id" value="<%= agenda.id %>" hidden>
-
+<br>
   <div class="has-validation">
     <label for="user" class="form-label">Descripcion</label>
     <input type="text" class="form-control" id="descripcion" name="descripcion" tabindex="4"value="<%= agenda.descripcion  %>" required>
@@ -55,52 +55,32 @@
     </div>
     </div>
 
-
+<br>
     <div class="has-validation">
-      <label for="user" class="form-label">ID_Doctor</label>
+      <label for="user" class="form-label">Doctor</label>
       <select id="id_doctor" name="id_doctor"  value="" tabindex="3" >
-        <option <%- agenda.id_doctor=='Martha Medina' ? "selected" : "" %> value="9" selected>Martha Medina</option>
-        <option <%- agenda.id_doctor=='Diego Ostanelli' ? "selected" : "" %> value="10" selected>Diego Ostanelli</option>
-        <option <%- agenda.id_doctor=='Sergio Porporato' ? "selected" : "" %> value="15" selected>Sergio Porporato</option>
-     
+        <option <%- agenda.id_doctor=='Martha Medina' ? "selected" : "" %> value="9" selected>Martha Medina(cardiologa y pediatra)</option>
+        <option <%- agenda.id_doctor=='Diego Ostanelli' ? "selected" : "" %> value="10" selected>Diego Ostanelli(dentista)</option>
+        <option <%- agenda.id_doctor=='Sergio Porporato' ? "selected" : "" %> value="15" selected>Sergio Porporato(traumatolog)</option>
+        <option <%- agenda.id_doctor=='Amadeo Pastorotu' ? "selected" : "" %> value="17" selected>Amadeo Pastorotu(radiologo/dignostico por imagen)</option>
+        <option <%- agenda.id_doctor=='FELIPE ABAYAY' ? "selected" : "" %> value="18" selected>FELIPE ABAYAY(clinica M/c.ext./gastroenterolog)</option>
+        <option <%- agenda.id_doctor=='ROSA ABDALA' ? "selected" : "" %> value="19" selected>ROSA ABDALA(traumatolog)</option>
       </select>
       </div>
 
-<div class="has-validation">
-<label for="agenda" class="form-label">ID_PACIENTE</label>
-<select id="id_paciente" name="id_paciente"  tabindex="3"  value="">
-  <option  <%- agenda.id_paciente=='Matilda Andrada' ? "selected" : "" %> value="1" selected>Matilda Andrada</option>
-  <option <%- agenda.id_paciente=='Malena Corte' ? "selected" : "" %> value="11" selected>Malena Corte</option>
-              
-</select>
-</div> 
-
-
-
-<div class="has-validation">
-<label for="user" class="form-label">Turno</label>
-<input type="text" class="form-control" id="id_shift" name="id_shift" tabindex="3" value="<%= agenda.id_shift  %>" required>
-<div class="valid-feedback">
-!Exelente!
-</div>
-<div class="invalid-feedback">
-por favor escriba el orden del turno
-</div>
-</div>
 
 
 
 
-<div class="has-validation">
+
+
+
+<br>
+
+<div >
   <label for="user" class="form-label">Consulta</label>
   <input type="text" class="form-control" id="consulta" name="consulta" tabindex="4" value="<%= agenda.consulta  %>" required>
-  <div class="valid-feedback">
-  !Exelente!
-  </div>
-  <div class="invalid-feedback">
-  escriba una consulta
-  </div>
-  </div>
+ </div>
 
   
 <br>

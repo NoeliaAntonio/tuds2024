@@ -3,12 +3,7 @@ const express = require('express');//referenciamos a express
 const app = express();//lo invocamos
 const {body, validationResult } = require('express-validator');
 const sequelize = require('./database/db');
-const User = require('./models/user');
-const Paciente = require('./models/patient');
-const Doctor = require('./models/doctor');
-const Especialidad = require('./models/specialty');
-const Estado = require('./models/state');
-const Turno = require('./models/shift');
+
 require ('./models/asosciaciones');
 var render = require('render');
 
@@ -38,11 +33,11 @@ app.use(express.urlencoded({extended:true}))
 
 
 //app.get("/", (req, res) => res.send("Express on Vercel"));
-app.get("/", (req, res) => res.render('menu.ejs'));
+app.get("/", (req, res) => res.render('index.ejs'));
 //fin de la validacion del formulario de ejs
 
-app.listen(3000, (req, res)=>{
-    console.log('SERVER RUNNING IN http://localhost:3000');
+app.listen(900, (req, res)=>{
+    console.log('SERVER RUNNING IN http://localhost:900');
 });
 
 

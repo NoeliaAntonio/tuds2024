@@ -30,26 +30,78 @@
         </div>
       </nav>
 
+      <tr>
+        <th>  <script>
+            //<![CDATA[
+            var date = new Date();//instancia un objeto de fecha con la fecha  actual
+            var d  = date.getDate();//muestra la fecha y la guarda en la variable d
+            var day = (d < 10) ? '0' + d : d;
+            var m = date.getMonth() + 1;//guarda el mes
+            var month = (m < 10) ? '0' + m : m;
+            var yy = date.getYear();//guarda el año
+            var year = (yy < 1000) ? yy + 1900 : yy;
+            document.write(day + "/" + month + "/" + year);//texto es una cadena de texto que contiene el texto a ser impreso en el documento
+            //]]>
+            </script>    
+    </th>
+    <th>
+    
+          <!--en este scrip tengo la hora actual-->
+          <p id="display-time">
+            <script>
+                function myFunc()  {
+                    var now = new Date();
+                    var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+                    document.getElementById('display-time').innerHTML = time;
+                }
+                setInterval(myFunc, 1000);
+            </script>
+            </p>
+          </th>
+          </tr>
+
       <div class="container mt-4">
      <tr>
             <div class="card border-secondary" data-bs-theme="blue">  
-                <div class="card-header">Nuevo Registro de un turno</div>
+                <div class="card-header">Nuevo turno</div>
                 <div class="card-body">
 
                 
 <!--saveshift esta en el crudshift-->
 <form action="/saveshift" method="POST" class="needs-validation" novalidate>
                       
+  <div>
+    <label for="shift" class="form-label">Agenda de :</label>
+    <select id="id_agenda" class="form-control" name="id_agenda"  tabindex="1"  required>
+      <option  value="5" selected>Sergio Porporato </option>
+      <option  value="6" selected>Marta Medina </option>
+      <option  value="7" selected>Diego Ostanelli </option>
+      <option  value="8" selected>Felipe Abayay </option>
+      <option  value="9" selected>Amadeo pastoruti </option>
+      <option  value="10" selected>Rosa Abdala </option>
+     
+  </select>
+  </div>
 
-  <div class="has-validation">
+  <div>
+    <label for="shift" class="form-label">Paciente :</label>
+    <select id="id_paciente" class="form-control" name="id_paciente"  tabindex="2"  required>
+      <option  value="1" selected>Matilda Andrada </option>
+      <option  value="11" selected>Malena Corte </option>
+      <option  value="12" selected>Mariana Adaro </option>
+      <option  value="13" selected>Susana Agosti </option>
+      <option  value="14" selected>Oscar Airasca </option>
+      <option  value="15" selected>Fernando fernandez </option>
+     </select>
+    </div>
+
+
+
+
+  <div >
     <label for="shift" class="form-label">Secuencia</label>
-    <input type="number" class="form-control" id="secuencia" name="secuencia" tabindex="1" required>
-    <div class="valid-feedback">
-      !Exelente!
-    </div>
-    <div class="invalid-feedback">
-      por favor escriba el orden del turno
-    </div>
+    <input type="number" class="form-control" id="secuencia" name="secuencia" tabindex="1" >
+   
   </div>
 
 
@@ -83,7 +135,7 @@
             
 
                           <div class="has-validation">
-                            <label for="shift" class="form-label">id_estado</label>
+                            <label for="shift" class="form-label">estado</label>
                             <select id="id_estado" name="id_estado"  tabindex="4"  required>
                                 <option  value="1" selected>Atendido</option>
                                 <option  value="2" selected>Esperando</option>
@@ -147,6 +199,12 @@
     }, false)
   })
 })()
+</script>
+
+<!--este script me pone la fecha actual en el input fecha-->
+<script>
+var fecha = new Date();
+document.getElementById("fecha").value = fecha.toJSON().slice(0,10);
 </script>
 
 </html>

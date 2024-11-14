@@ -7,12 +7,10 @@ const conexion = require('../database/db');
 exports.saveagenda = (req, res)=>{
     const descripcion = req.body.descripcion;
     const id_doctor = req.body.id_doctor;
-    const id_paciente = req.body.id_paciente;
-    const id_shift = req.body.id_shift;
     const consulta = req.body.consulta;
    
    
-    conexion.query('INSERT INTO agendas SET ?',{descripcion:descripcion,id_doctor:id_doctor,id_paciente:id_paciente,id_shift:id_shift,consulta:consulta}, (error, results)=>{
+    conexion.query('INSERT INTO agendas SET ?',{descripcion:descripcion,id_doctor:id_doctor,consulta:consulta}, (error, results)=>{
         if(error){
             console.log(error);
         }else{
@@ -26,11 +24,9 @@ exports.updateagenda = (req, res)=>{
     const id = req.body.id;
     const descripcion = req.body.descripcion;
     const id_doctor = req.body.id_doctor;
-    const id_paciente = req.body.id_paciente;
-    const id_shift = req.body.id_shift;
     const consulta = req.body.consulta;
    
-    conexion.query('UPDATE agendas SET ? WHERE id = ?',[{descripcion:descripcion,id_doctor:id_doctor,id_paciente:id_paciente,id_shift:id_shift,consulta:consulta}, id], (error, results)=>{
+    conexion.query('UPDATE agendas SET ? WHERE id = ?',[{descripcion:descripcion,id_doctor:id_doctor,consulta:consulta}, id], (error, results)=>{
         if(error){
             console.log(error);
         }else{           

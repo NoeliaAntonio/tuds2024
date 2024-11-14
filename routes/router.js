@@ -271,7 +271,7 @@ router.get('/dataestado', (req, res)=>{
 })
 //ruta para enviar los datos en formato json al axaj del datatable turno o shift
 router.get('/datashift', (req, res)=>{     
-    conexion.query('SELECT t.id as id, p.nombre as nombre,p.apellido as apellido,t.secuencia as secuencia,t.fecha as fecha,t.hora as hora,t.id_estado as id_estado,e.descripcion as descripcion,t.motivo as motivo FROM shifts t INNER JOIN states e on(t.id=e.id) INNER JOIN agendas a on(a.id=t.id) INNER JOIN patients p on(a.id_paciente=p.id)',(error, results)=>{
+    conexion.query('SELECT t.id,t.id_agenda,t.id_paciente,p.nombre,p.apellido,t.secuencia,t.fecha,t.hora,t.id_estado,s.descripcion,t.motivo,a.id_doctor,d.nombre as nombred,d.apellido as apellidod FROM patients p INNER JOIN shifts t on (p.id=t.id_paciente) INNER JOIN states s on(t.id_estado=s.id)INNER JOIN agendas a on(a.id=t.id_agenda)INNER JOIN doctors d on(d.id=a.id_doctor);',(error, results)=>{
         if(error){
             throw error;
         } else {                                                   
@@ -282,7 +282,7 @@ router.get('/datashift', (req, res)=>{
 })
 //ruta para enviar los datos en formato json al axaj del datatable de agenda
 router.get('/dataagendas', (req, res)=>{     
-    conexion.query('SELECT a.id as id,a.descripcion as descripcion,a.id_doctor as id_doctor,d.nombre as dnombre,d.apellido as dapellido,a.id_paciente as id_paciente,p.nombre as pnombre,p.apellido as papellido,a.id_shift as id_shift,t.secuencia,t.fecha,t.hora,a.consulta as consulta FROM agendas a INNER JOIN patients p on(a.id_paciente=p.id)INNER JOIN doctors d on(a.id_doctor=d.id)INNER JOIN shifts t on(a.id_shift=t.id);',(error, results)=>{
+    conexion.query('SELECT a.id,a.descripcion,a.id_doctor,d.nombre as nombre,d.apellido as apellido,a.consulta FROM doctors d INNER JOIN agendas a on(d.id=a.id_doctor)',(error, results)=>{
         if(error){
             throw error;
         } else {                                                   
@@ -429,7 +429,7 @@ router.get('/datahc', (req, res)=>{
 
 //ruta para enviar los datos en formato a la doctora con el id 9 martha medina
 router.get('/datamartha', (req, res)=>{     
-    conexion.query('SELECT p.nombre as Nombre,p.apellido as Apellido,a.descripcion as Descripcion,a.consulta as Consulta,s.secuencia as Turno,s.fecha as Fecha,s.hora as Hora,s.motivo as Motivo,e.descripcion as Estado FROM patients p INNER JOIN agendas a on(p.id=a.id_paciente) INNER JOIN shifts s on (a.id_shift=s.id)INNER JOIN states e on (s.id=e.id)INNER JOIN doctors d on(d.id=a.id_doctor) WHERE d.id=9;',(error, results)=>{
+    conexion.query('SELECT a.id,d.nombre,d.apellido,a.descripcion,a.consulta,s.id_paciente,p.nombre as nomprep,p.apellido as apellidop,s.secuencia,s.fecha,s.hora,s.id_estado,e.descripcion as estado,s.motivo FROM doctors d INNER JOIN agendas a on (d.id=a.id_doctor) INNER JOIN shifts s on(a.id=s.id_agenda) INNER JOIN patients p on (p.id=s.id_paciente)INNER JOIN states e on (s.id_estado=e.id)WHERE a.id=6;',(error, results)=>{
         if(error){
             throw error;
         } else {                                                   
@@ -440,7 +440,7 @@ router.get('/datamartha', (req, res)=>{
 })
 //ruta para enviar los datos en formato al dr.diego ostanelli con el id=10
 router.get('/datadiego', (req, res)=>{     
-    conexion.query('SELECT p.nombre as nombre,p.apellido as apellido,a.descripcion as adescripcion,a.consulta as consulta,s.secuencia as Turno,s.fecha as fecha,s.hora as hora,s.motivo,e.descripcion FROM patients p INNER JOIN agendas a on(p.id=a.id_paciente) INNER JOIN shifts s on (a.id_shift=s.id)INNER JOIN states e on (s.id=e.id)INNER JOIN doctors d on(d.id=a.id_doctor) WHERE d.id=10;',(error, results)=>{
+    conexion.query('SELECT a.id,d.nombre,d.apellido,a.descripcion,a.consulta,s.id_paciente,p.nombre as nomprep,p.apellido as apellidop,s.secuencia,s.fecha,s.hora,s.id_estado,e.descripcion as estado,s.motivo FROM doctors d INNER JOIN agendas a on (d.id=a.id_doctor) INNER JOIN shifts s on(a.id=s.id_agenda) INNER JOIN patients p on (p.id=s.id_paciente)INNER JOIN states e on (s.id_estado=e.id)WHERE a.id=7;',(error, results)=>{
         if(error){
             throw error;
         } else {                                                   
@@ -462,12 +462,45 @@ router.get('/dataverregistro', (req, res)=>{
 })
 //ruta para enviar los datos en formato al dr.sergio porporato con el id=15
 router.get('/datasergio', (req, res)=>{     
-    conexion.query('SELECT d.id as id,p.nombre as nombre,p.apellido as apellido,a.descripcion as descripcion,a.consulta as consulta,s.secuencia as Turno,s.fecha as fecha,s.hora as hora,s.motivo as motivo,e.descripcion as descripcion,e.descripcion as estado FROM patients p INNER JOIN agendas a on(p.id=a.id_paciente) INNER JOIN shifts s on (a.id_shift=s.id)INNER JOIN states e on (s.id=e.id)INNER JOIN doctors d on(d.id=a.id_doctor) WHERE d.id=15;',(error, results)=>{
+    conexion.query('SELECT a.id,d.nombre,d.apellido,a.descripcion,a.consulta,s.id_paciente,p.nombre as nomprep,p.apellido as apellidop,s.secuencia,s.fecha,s.hora,s.id_estado,e.descripcion as estado,s.motivo FROM doctors d INNER JOIN agendas a on (d.id=a.id_doctor) INNER JOIN shifts s on(a.id=s.id_agenda) INNER JOIN patients p on (p.id=s.id_paciente)INNER JOIN states e on (s.id_estado=e.id)WHERE a.id=5;',(error, results)=>{
         if(error){
             throw error;
         } else {                                                   
             datasergio = JSON.stringify(results);//es donde guarda un objeto doctor datadoctors
             res.send(datasergio);          
+        }   
+    })
+})
+//ruta para enviar los datos en formato al dr.sergio porporato con el id=15
+router.get('/dataamadeopastorotu', (req, res)=>{     
+    conexion.query('SELECT a.id,d.nombre,d.apellido,a.descripcion,a.consulta,s.id_paciente,p.nombre as nomprep,p.apellido as apellidop,s.secuencia,s.fecha,s.hora,s.id_estado,e.descripcion as estado,s.motivo FROM doctors d INNER JOIN agendas a on (d.id=a.id_doctor) INNER JOIN shifts s on(a.id=s.id_agenda) INNER JOIN patients p on (p.id=s.id_paciente)INNER JOIN states e on (s.id_estado=e.id)WHERE a.id=9;',(error, results)=>{
+        if(error){
+            throw error;
+        } else {                                                   
+            datasergio = JSON.stringify(results);//es donde guarda un objeto doctor datadoctors
+            res.send(datasergio);          
+        }   
+    })
+})
+//ruta para enviar los datos en formato al dr.sergio porporato con el id=15
+router.get('/datafelipeabayay', (req, res)=>{     
+    conexion.query('SELECT a.id,d.nombre,d.apellido,a.descripcion,a.consulta,s.id_paciente,p.nombre as nomprep,p.apellido as apellidop,s.secuencia,s.fecha,s.hora,s.id_estado,e.descripcion as estado,s.motivo FROM doctors d INNER JOIN agendas a on (d.id=a.id_doctor) INNER JOIN shifts s on(a.id=s.id_agenda) INNER JOIN patients p on (p.id=s.id_paciente)INNER JOIN states e on (s.id_estado=e.id)WHERE a.id=8;',(error, results)=>{
+        if(error){
+            throw error;
+        } else {                                                   
+            datafelipeabayay = JSON.stringify(results);//es donde guarda un objeto doctor datadoctors
+            res.send(datafelipeabayay);          
+        }   
+    })
+})
+//ruta para enviar los datos en formato al dr.sergio porporato con el id=15
+router.get('/datarosaabdala', (req, res)=>{     
+    conexion.query('SELECT a.id,d.nombre,d.apellido,a.descripcion,a.consulta,s.id_paciente,p.nombre as nomprep,p.apellido as apellidop,s.secuencia,s.fecha,s.hora,s.id_estado,e.descripcion as estado,s.motivo FROM doctors d INNER JOIN agendas a on (d.id=a.id_doctor) INNER JOIN shifts s on(a.id=s.id_agenda) INNER JOIN patients p on (p.id=s.id_paciente)INNER JOIN states e on (s.id_estado=e.id)WHERE a.id=10;',(error, results)=>{
+        if(error){
+            throw error;
+        } else {                                                   
+            datarosaabdala = JSON.stringify(results);//es donde guarda un objeto doctor datadoctors
+            res.send(datarosaabdala);          
         }   
     })
 })
@@ -482,6 +515,8 @@ router.get('/dataevolucion', (req, res)=>{
         }   
     })
 })
+
+
 
 //RUTA QUE NOS LLEVA AL FORMULARIO PARA DAR DE ALTA UN NUEVO REGISTRO
 router.get('/create', (req,res)=>{
@@ -752,6 +787,19 @@ router.get('/cargarevolucion', (req,res)=>{
 router.get('/cargarevolucion1', (req,res)=>{
     res.render('cargarevolucion1.ejs');
 })
+//RUTA para ver 
+router.get('/agendademadeopastorotu', (req,res)=>{
+    res.render('agendademadeopastorotu.ejs');
+})
+//RUTA para ver 
+router.get('/agendadefelipeabayay', (req,res)=>{
+    res.render('agendadefelipeabayay.ejs');
+})
+//RUTA para ver 
+router.get('/agendaderosaabdala', (req,res)=>{
+    res.render('agendaderosaabdala.ejs');
+})
+
 
 
 
@@ -961,16 +1009,16 @@ router.get('/verregistro/:id_paciente', (req,res)=>{    //este viene de la vista
     });
 });
 //RUTA PARA MOSTRAR TODOS LOS TURNOS CON ESE DOCTOR DANDOLE COMO PARAMETRO EL ID_DOCTOR,id_paciente,id_shift
-router.get('/mostrarturnoconeliddelmedico/:id_doctor/:id_paciente/:id_shift', (req,res)=>{    //este viene de la vista editaragenda.ejs
-    const id_doctor = req.params.id_doctor;
-    const id_paciente = req.params.id_paciente;
-    const id_shift = req.params.id_shift;
-    conexion.query('SELECT p.nombre AS Nombre,p.apellido AS Apellido,a.consulta as Consulta,d.nombre as paciente,d.apellido as apellidop,s.secuencia as turno,s.fecha as fecha ,s.hora as hora,e.descripcion as estado from patients p INNER JOIN agendas a on(p.id=a.id_paciente) INNER JOIN doctors d on(d.id=a.id_doctor) INNER JOIN shifts s on(a.id_shift=s.id) INNER JOIN states e on(s.id=e.id) WHERE id_doctor=? and id_paciente=?  and id_shift=? ',[id_doctor][id_paciente][id_shift] , (error, results) => {
+router.get('/mostraragenda/:id', (req,res)=>{    //este viene de la vista editaragenda.ejs
+    const id = req.params.id;
+    
+    conexion.query('SELECT a.id,d.nombre,d.apellido,a.descripcion,a.consulta,s.id_paciente,p.nombre as nomprep,p.apellido as apellidop,s.secuencia,s.fecha,s.hora,s.id_estado,e.descripcion as estado,s.motivo FROM doctors d INNER JOIN agendas a on (d.id=a.id_doctor) INNER JOIN shifts s on(a.id=s.id_agenda) INNER JOIN patients p on (p.id=s.id_paciente)INNER JOIN states e on (s.id_estado=e.id) WHERE id=?',[id] , (error, results) => {
         if (error) {
             throw error;
         }else{            
-            res.redirect('/mostrarturnoconeliddelmedico.ejs'); //evolucion lo uso en editarevolucion.ejs        
-            }        
+            res.render('mostraragenda.ejs', {mostraragenda:results[0]});  //patient va a estar en la vista como variable que trae los datos          
+            
+        }        
     });
 });
 

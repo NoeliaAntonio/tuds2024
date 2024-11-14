@@ -39,9 +39,7 @@
                 <div class="card-header">Nuevo Registro de agenda</div>
                 <div class="card-body">
 
-   <h5>el id 9 es el dr.Marta Medina</h5> 
-   <h5>el id 10 es el dr.Diego Ostanelli</h5>      
-   <h5>el id 15 es el dr.Sergio porporato</h5>                  
+                
 <!--ACA COMIENZA EL FORMULARIO DE AGENDA-->                 
 <form action="/saveagenda" method="POST" class="needs-validation" novalidate>
 
@@ -56,48 +54,42 @@
     </div>
     </div>
 
+    <br>
     <div class="has-validation">
-      <label for="user" class="form-label">ID_Doctor</label>
+      <label for="user" class="form-label">Doctor</label>
+      
       <select id="id_doctor" name="id_doctor"  tabindex="2" >
         <option value="9" selected>Martha Medina</option>
-        <option value="10" selected>Diego Ostanelli</option>
-        <option value="15" selected>Sergio Porporato</option>
+        <option value="10" selected>Diego Ostanelli(dentista)</option>
+        <option value="15" selected>Sergio Porporato(traumatolog)</option>
+        <option value="17" selected>Amadeo pastorotu(Radiologia/diagnostico por imagen)</option>
+        <option value="18" selected>FELIPE ABAYAY(clinica medica/consultorio externo/Gastroenterolog)</option>
+        <option value="19" selected>Rosa Abdala</option>
+        <option value="15" selected>Diego Ostanelli</option>
       </select>
       </div>
 
-<div class="has-validation">
-<label for="agenda" class="form-label">ID_PACIENTE</label>
-<select id="id_paciente" name="id_paciente"  tabindex="3" >
- 
- <option value="1" selected>Matilda Andrada</option>
- <option value="11" selected>Malena Corte</option>
-</select>
-</div> 
 
 
 
-<div class="mb-3">
-  <label for="shift" class="form-label">ID_Shift</label>
-  <label>cantidad de turnos</label>
-  <select id="id_shift" name="id_shift"   value="" tabindex="4">
-    <option  value="1">1</option>
-    <option value="2">2</option>
-    <option  value="3">3</option>
-    <option  value="4">4</option>
-    <option value="5">5</option>
-    <option  value="6">6</option>
-    <option  value="7">7</option>
-    <option value="8">8</option>
-    <option  value="9">9</option>
-    <option  value="10">10</option>
-  </select>                       
-  </div>
 
 
 
+<br>
 <div class="has-validation">
 <label for="user" class="form-label">Consulta</label>
-<input type="text" class="form-control" id="consulta" name="consulta" tabindex="5" required>
+
+<select id="consulta" name="consulta"  tabindex="5" >
+  <option value="Consultas con especialistas" selected>Consultas con especialistas</option>
+  <option value="Consultas de atención primaria" selected>Consultas de atención primaria</option>
+  <option value="Consultas de control y seguimiento" selected>Consultas de control y seguimiento</option>
+  <option value="Consultas preventivas" selected>Consultas preventivas</option>
+  <option value="Consultas pediátricas" selected>Consultas pediátricas</option>
+  <option value="Consultas ginecológicas" selected>Consultas ginecológicas</option>
+  <option value="Consultas urológicas" selected>Consultas urológicas</option>
+  <option value="Consultas geriátricas" selected>Consultas geriátricas</option>
+ 
+</select>
 <div class="valid-feedback">
 !Exelente!
 </div>
@@ -107,7 +99,7 @@ por favor escriba una consulta
 </div>
 
 
-
+<br>
 
 <button type="submit" class="btn btn-primary" tabindex="6">Guardar</button>
 <a href="/indexagenda" class="btn btn-secondary">Cancelar</a>

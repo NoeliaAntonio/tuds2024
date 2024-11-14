@@ -48,19 +48,54 @@
 </nav>
 
       <h5>Agenda de la dr.Diego Ostanelli</h5>
+      <tr>
+        <th>  <script>
+            //<![CDATA[
+            var date = new Date();//instancia un objeto de fecha con la fecha  actual
+            var d  = date.getDate();//muestra la fecha y la guarda en la variable d
+            var day = (d < 10) ? '0' + d : d;
+            var m = date.getMonth() + 1;//guarda el mes
+            var month = (m < 10) ? '0' + m : m;
+            var yy = date.getYear();//guarda el año
+            var year = (yy < 1000) ? yy + 1900 : yy;
+            document.write(day + "/" + month + "/" + year);//texto es una cadena de texto que contiene el texto a ser impreso en el documento
+            //]]>
+            </script>    
+    </th>
+    <th>
+    
+          <!--en este scrip tengo la hora actual-->
+          <p id="display-time">
+            <script>
+                function myFunc()  {
+                    var now = new Date();
+                    var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+                    document.getElementById('display-time').innerHTML = time;
+                }
+                setInterval(myFunc, 1000);
+            </script>
+            </p>
+          </th>
+          </tr>
+          
       <div class="container">
       <table id="diego" class="table table-bordered table-striped text-center mt-4" style="background-color:DodgerBlue;">
         <thead>
           <tr class="text-white" style="background-color:#6200ee;">
+            <th scope="col">id</th>
             <th scope="col"> Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Descripcion</th>
-            <th scope="col">Consulta</th>            
+            <th scope="col">Consulta</th>
+            <th scope="col">id_paciente</th>
+            <th scope="col">nombre</th>
+            <th scope="col">apellido</th>            
             <th scope="col">Turno</th>  
             <th scope="col">Fecha</th>  
-            <th scope="col">Hora</th>  
-            <th scope="col">Motivo</th> 
-            <th scope="col">Estado</th>   
+            <th scope="col">Hora</th>
+            <th scope="col">id_estado</th>  
+            <th scope="col">Descripcion</th> 
+            <th scope="col">motivo</th>   
             
                     
           </tr>
@@ -86,15 +121,20 @@
         dataSrc: ""
     },   
     columns: [ 
+    {'data': 'id',visible:false}, 
         {'data': 'nombre'/*,visible:false*/},// visible:false esto hace que el id sea invisible   pero no me deja eliminar porque lo tengo con el id __ 'data':'id' ___    
         {'data': 'apellido'},
-        {'data': 'adescripcion'},
-        {'data': 'consulta'}, 
-        {'data': 'Turno'}, 
+        {'data': 'descripcion'},
+        {'data': 'consulta'},
+        {'data': 'id_paciente',visible:false}, 
+        {'data': 'nomprep'},
+        {'data': 'apellidop'},
+        {'data': 'secuencia'}, 
         {'data': 'fecha'}, 
-        {'data': 'hora'}, 
-        {'data': 'motivo'}, 
-        {'data': 'descripcion'}           
+        {'data': 'hora'},
+        {'data': 'id_estado',visible:false}, 
+        {'data': 'estado'}, 
+        {'data': 'motivo'}            
                                                                                                      //la funcion eliminar esta en routeer.js y le paso el parametro id                                  
     ],
     pageLength : 5,

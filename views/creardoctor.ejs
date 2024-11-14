@@ -42,6 +42,7 @@
     <div class="card-body">
 
         <form action="/savedoctor" method="POST" class="needs-validation" novalidate>
+          
           <div class="has-validation">
           <label for="doctor" class="form-label">Nombre</label>
           <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" required>
@@ -53,18 +54,33 @@
           </div>
           </div>
 
-          <div>
+          <div class="has-validation">
           <label for="doctor" class="form-label">Apellido</label>
           <input type="text" class="form-control" id="apellido" name="apellido" tabindex="2" required>
-          </div>
-          <div>
+          <div class="valid-feedback">
+            !Exelente!
+         </div>
+         <div class="invalid-feedback">
+           por favor escriba el apellido
+         </div>
+        </div>
+
+
+
+          <div class="has-validation">
           <label for="doctor" class="form-label">Email</label>
           <input type="text" class="form-control" id="email" name="email" tabindex="4" required>
-          </div>
+          <div class="valid-feedback">
+            !Exelente!
+         </div>
+         <div class="invalid-feedback">
+           por favor escriba el email
+         </div>  
+        </div>
 
           <div>
           <label for="doctor" class="form-label">Fecha de Nacimiento</label>
-          <input type="date" class="form-control" id="nacimiento" name="nacimiento" tabindex="5" required>
+          <input type="date" class="form-control" id="nacimiento" name="nacimiento" tabindex="5" >
           </div>
           <div>
             <fieldset>
@@ -85,22 +101,23 @@
             </div>
             </fieldset>
             </div>
+
+
             <div>
             <label for="doctor" class="form-label">Direccion</label>
-            <input type="text" class="form-control" id="direccion" name="direccion" tabindex="4" required>
+            <input type="text" class="form-control" id="direccion" name="direccion" tabindex="4" >
             </div>  
          
           
 
           <div>
           <label for="doctor" class="form-label">Celular</label>
-          <input type="number" class="form-control" id="celular" name="celular" tabindex="10" required>
+          <input type="number" class="form-control" id="celular" name="celular" tabindex="10" >
           </div>
-           <!--
-          <div>
-          <label >Elige una foto de perfil:</label>
-          <input type="file" id="imagen" name="imagen" accept="image/png, image/jpeg" />
-        </div>-->
+          
+
+
+
         <div class="form-group">
           <label>Avatar</label>
           <div class="profile-upload">
@@ -113,13 +130,16 @@
           </div>
         </div>
 
+
+
+        
           <div>
             <label for="doctor" class="form-label">Sucursal</label>
             <input type="text" class="form-control" id="sucursal" name="sucursal" tabindex="12" required>
             </div>
             <div>
             <label for="doctor" class="form-label">Biografia</label>
-            <input type="text" class="form-control" id="biografia" name="biografia" tabindex="13" required>
+            <input type="text" class="form-control" id="biografia" name="biografia" tabindex="13" >
             </div>
             <div>
             <div>

@@ -14,6 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Shift.init({
+    id_agenda: DataTypes.integer,
+    id_paciente: DataTypes.integer,
    secuencia: DataTypes.STRING,
     fecha: DataTypes.STRING,
     hora: DataTypes.STRING,

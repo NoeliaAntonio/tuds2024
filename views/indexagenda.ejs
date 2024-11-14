@@ -56,17 +56,32 @@
             </nav>
 
 
-            <h7>el id 9 es el dr.Marta Medina</h7><br> 
-            <h7>el id 10 es el dr.Diego Ostanelli</h7><br>      
-            <h7>el id 15 es el dr.Sergio porporato</h7><br>        
+              
 <!--ACA EMPIEZA EL FORMULARIO-->
-        <h5>Agenda del dia </h5>
-        <div class="container">
-        <a href="/crearagenda" class="btn btn-primary mt-4" onclick="alert('vas a crear un nueva agenda!')" value="Acepto!"><i class="fas fa-plus-square"></i></a> 
-        <a href="/vermedicoespecialidad" class="btn btn-primary mt-4" onclick="alert('vas a ver las especialidades de medicos!')" value="Acepto!"><i><box-icon type='solid' name='tree-alt'></box-icon></i></a>    
-        <a href="/verAgenda" class="btn btn-primary mt-4" onclick="alert('ver la Agenda!')"><i><box-icon name='rfid'></box-icon></i></a>    
-        <a href="/indexshift" class="btn btn-primary mt-4" onclick="alert('ver turnos para atender!')" ><i><box-icon name='show'></box-icon> </i></a>
+        <h5>Agenda</h5>
+
         
+        <script>
+          //<![CDATA[
+          var date = new Date();
+          var d  = date.getDate();
+          var day = (d < 10) ? '0' + d : d;
+          var m = date.getMonth() + 1;
+          var month = (m < 10) ? '0' + m : m;
+          var yy = date.getYear();
+          var year = (yy < 1000) ? yy + 1900 : yy;
+          document.write(day + "/" + month + "/" + year);
+          //]]>
+          </script>    
+
+
+        <a href="/menu"><i><box-icon name='arrow-back'></box-icon></i></a>
+
+        <div class="container">
+        <a href="/crearagenda" class="btn btn-primary mt-4" ><i class="fas fa-plus-square"></i></a> 
+        <a href="/vermedicoespecialidad" class="btn btn-primary mt-4" onclick="alert('vas a ver las especialidades de medicos!')" value="Acepto!"><i><box-icon type='solid' name='tree-alt'></box-icon></i></a>    
+        <!--<a href="/verAgenda"-->
+        <a href="/crearshift" class="btn btn-primary mt-4"  value='Acepto!'><i><box-icon type='logo' name='netlify'></box-icon></i></a>
         <table id="age" class="table table-bordered table-striped text-center mt-4" style="background-color:DodgerBlue;"><!--agendas es el nombre de la tabla que desues uso para el datatable-->
         <thead>
         <tr class="text-white" style="background-color:#6200ee;">
@@ -75,13 +90,6 @@
                   <th scope="col">id_doctor</th>
                   <th scope="col">Dr.</th>
                   <th scope="col">Apellido</th>
-                  <th scope="col">id_paciente</th>
-                  <th scope="col">Paciente</th>
-                  <th scope="col">Apellido</th>
-                  <th scope="col">id_shift</th>
-                  <th scope="col">Secuencia</th>
-                  <th scope="col">Fecha</th>
-                  <th scope="col">Hora</th>
                   <th scope="col">Consullta</th>
                   <th scope="col">ACCIONES</th>
         </tr>
@@ -91,6 +99,9 @@
         </table>
         </div>
         <a href="/menu"><i><box-icon name='arrow-back'></box-icon></i></a>
+        
+
+
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
         <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -112,23 +123,15 @@
               }, 
                
               columns: [ 
-                { data: 'id',visible:false},
+                { data: 'id'/*,visible:false*/},
                 { data: 'descripcion'/*,visible:false*/},
                 { data: 'id_doctor',visible:false},
-                { data: 'dnombre'},
-                { data: 'dapellido'},
-                { data: 'id_paciente',visible:false},
-                { data: 'pnombre'},
-                { data: 'papellido'},
-                { data: 'id_shift',visible:false},
-                { data: 'secuencia'},
-                { data: 'fecha'},
-                { data: 'hora'},
+                { data: 'nombre'},
+                { data: 'apellido'},
                 { data: 'consulta'},
-                
-                { data: null,
+                 { data: null,
                       "render": function (dataagendas) { //la funcion data esta en router.js
-                        return '<a href="/editaragenda/'+dataagendas.id+'"class="btn btn-info"><i class="fas fa-edit"></i></a>             <a onclick="confirmar('+dataagendas.id+')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>       <a href="/crearshift" class="btn btn-primary mt-4" onclick="alert("vas a crear un nuevo TURNO! Recuerda que 29-11-24 estoy de vacaciones")" value="Acepto!"><i><box-icon type="logo" name="netlify"></box-icon></i></a>            <a href="/mostrarturnoconeliddelmedico/'+dataagendas.id_doctor+dataagendas.id_paciente+dataagendas.id_shift+'"class="btn btn-info"><i><box-icon type="solid" name="baguette"></box-icon></i></a> '                           
+                        return '<a href="/editaragenda/'+dataagendas.id+'"class="btn btn-info"><i class="fas fa-edit"></i></a>  <a onclick="confirmar('+dataagendas.id+')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>  '                           
                         }//la funcion edit esta en router.js
                   }                                    
               ],

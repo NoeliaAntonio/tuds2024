@@ -37,9 +37,28 @@
       <div class="card-body">
       <form action="/updateshift" method="POST"><!--updateshift esta en el crudshift en la fuincion updateshift-->
       <input id="id" name="id" value="<%= shift.id %>" hidden>
+      <input id="id" name="id_agenda" value="<%= shift.id_agenda %>" hidden>
+      <input id="id" name="id_paciente" value="<%= shift.id_paciente %>" hidden>
 
      
- 
+     <!-- <div>
+        <label for="shift" class="form-label">id_agenda</label>
+        <select id="id_agenda" class="form-control" name="id_agenda"  tabindex="1" value="" required>
+          <option  <option <%- shift.id_agenda=='5' ? "selected" : "" %> value="5" selected>semana del 18-11-24 al 22-11-24 </option>
+          <option   <option <%- shift.id_agenda=='6' ? "selected" : "" %>value="6" selected>semana del 25-11-24 al 29-11-24 </option>
+         
+      </select>
+      </div>-->
+    
+      <!--
+      <div>
+        <label for="shift" class="form-label">id_paciente</label>
+        <select id="id_paciente" class="form-control" name="id_paciente"  tabindex="2" value="" required>
+          <option  <option <%- shift.id_paciente=='1' ? "selected" : "" %> value="1" selected>Matilda Andrada </option>
+          <option   <option <%- shift.id_paciente=='11' ? "selected" : "" %> value="11" selected>Malena Corte </option>
+         </select>
+        </div>-->
+    
 
      
 
@@ -58,14 +77,14 @@
         <option <%- shift.secuencia=='9' ? "selected" : "" %> value="9">9</option>
         <option <%- shift.secuencia=='10' ? "selected" : "" %> value="10">10</option>
         <option <%- shift.secuencia=='11' ? "selected" : "" %> value="11">11</option>
-        <option <%- shift.secuencia=='12' ? "selected" : "" %> value="">12</option>
-        <option <%- shift.secuencia=='13' ? "selected" : "" %> value="13"></option>
+        <option <%- shift.secuencia=='12' ? "selected" : "" %> value="12">12</option>
+        <option <%- shift.secuencia=='13' ? "selected" : "" %> value="13">13</option>
       </select>                              
       </div> 
       
       
       <div class="mb-3">
-      <label for="user" class="form-label">Elige la fecha de tu turno preferida (obligatorio, del 5 al 29 de noviembre):
+      <label for="user" class="form-label">Elige la fecha del turno:
       <!--<input type="text" class="form-control" id="fecha" name="fecha" tabindex="4" value="<%= shift.fecha  %>">-->
       <input type="date" class="form-control" id="fecha" name="fecha" tabindex="4" value="<%= shift.fecha  %>" 
       min="2024-11-5"
@@ -83,7 +102,7 @@
 
       
       <div class="mb-3">
-        <label for="user" class="form-label">ID_ESTADO</label>
+        <label for="user" class="form-label">ESTADO</label>
         <select id="id_estado" name="id_estado"   value="" tabindex="6">
             <option <%- shift.id_estado=='1' ? "selected" : "" %> value="1">Atendido</option>
             <option <%- shift.id_estado=='2' ? "selected" : "" %> value="2">Esperando</option>
